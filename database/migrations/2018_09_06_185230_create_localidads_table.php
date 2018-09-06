@@ -14,8 +14,15 @@ class CreateLocalidadsTable extends Migration
     public function up()
     {
         Schema::create('localidads', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('localidad_id');
+            $table->string('nombre',65);
+            $table->integer('cod_postal')->unique();
+
+        });
+
+        Schema::table('localidads', function (Blueprint $table) {
+        
+            $table->foreign('provincia_id')->references('provincia_id')->on('provinciass');
         });
     }
 

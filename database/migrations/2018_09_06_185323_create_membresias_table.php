@@ -14,8 +14,11 @@ class CreateMembresiasTable extends Migration
     public function up()
     {
         Schema::create('membresias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('membresia_id');
+            $table->string('estado',255);
+            $table->date('fecha_pago');
+            $table->date('fecha_vencimiento');
+            $table->integer('costo');
         });
     }
 

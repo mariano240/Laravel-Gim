@@ -14,8 +14,16 @@ class CreatePagosTable extends Migration
     public function up()
     {
         Schema::create('pagos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('pago_id');
+            $table->integer('monto');
+            $table->string('forma_pago',255);
+            $table->date('fecha');
+            
+        });
+
+        Schema::table('pagos', function (Blueprint $table) {
+            $table->foreign('membresia_id')->references('membresia_id')->on('membresias');
+            
         });
     }
 
