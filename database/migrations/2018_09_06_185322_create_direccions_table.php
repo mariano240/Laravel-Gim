@@ -22,7 +22,8 @@ class CreateDireccionsTable extends Migration
 
         });
 
-        Schema::create('direccions', function (Blueprint $table) {
+        Schema::table('direccions', function (Blueprint $table) {
+            $table->unsignedInteger('localidad_id');
             $table->foreign('localidad_id')->references('localidad_id')->on('localidads');
         
         });

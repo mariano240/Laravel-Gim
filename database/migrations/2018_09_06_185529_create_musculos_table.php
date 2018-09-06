@@ -20,6 +20,7 @@ class CreateMusculosTable extends Migration
         });
 
         Schema::table('musculos', function (Blueprint $table) {
+            $table->unsignedInteger('regioncorporal_id');
             $table->foreign('regioncorporal_id')->references('regioncorporal_id')->on('region_corporals');
         });
 

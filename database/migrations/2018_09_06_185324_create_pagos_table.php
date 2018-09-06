@@ -22,6 +22,7 @@ class CreatePagosTable extends Migration
         });
 
         Schema::table('pagos', function (Blueprint $table) {
+            $table->unsignedInteger('membresia_id');
             $table->foreign('membresia_id')->references('membresia_id')->on('membresias');
             
         });

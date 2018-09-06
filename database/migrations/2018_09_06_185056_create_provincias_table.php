@@ -16,11 +16,12 @@ class CreateProvinciasTable extends Migration
         Schema::create('provincias', function (Blueprint $table) {
             $table->increments('provincia_id');
             $table->string('nombre',65);
+           
         });
 
         Schema::table('provincias', function (Blueprint $table) {
-          
-            $table->foreign('pais_id')->references('pais_id')->on('paiss');
+            $table->unsignedInteger('pais_id');
+            $table->foreign('pais_id')->references('pais_id')->on('pais');
         });
     }
 

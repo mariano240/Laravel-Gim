@@ -18,6 +18,8 @@ class CreateHistorialEntrenamientosTable extends Migration
         });
 
         Schema::table('historial_entrenamientos', function (Blueprint $table) {
+            $table->unsignedInteger('entrenamiento_id');
+            $table->unsignedInteger('usuario_id');
             $table->foreign('entrenamiento_id')->references('entrenamiento_id')->on('entrenamientos');
             $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
         });

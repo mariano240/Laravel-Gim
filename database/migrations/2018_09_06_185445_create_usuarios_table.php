@@ -25,6 +25,8 @@ class CreateUsuariosTable extends Migration
         });
 
         Schema::table('usuarios', function (Blueprint $table) {
+            $table->unsignedInteger('membresia_id');
+            $table->unsignedInteger('direccion_id');
             $table->foreign('membresia_id')->references('membresia_id')->on('membresias');
             $table->foreign('direccion_id')->references('direccion_id')->on('direccions');
         });

@@ -21,8 +21,8 @@ class CreateLocalidadsTable extends Migration
         });
 
         Schema::table('localidads', function (Blueprint $table) {
-        
-            $table->foreign('provincia_id')->references('provincia_id')->on('provinciass');
+            $table->unsignedInteger('provincia_id');
+            $table->foreign('provincia_id')->references('provincia_id')->on('provincias');
         });
     }
 
