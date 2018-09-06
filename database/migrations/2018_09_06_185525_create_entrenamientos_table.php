@@ -14,8 +14,11 @@ class CreateEntrenamientosTable extends Migration
     public function up()
     {
         Schema::create('entrenamientos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('entrenamiento_id');
+            $table->string('nombre',65);
+            $table->boolean('publico');
+            $table->date('fecha_creacion');
+            $table->date('fecha_modificacion')->nullable();
         });
     }
 

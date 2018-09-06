@@ -14,8 +14,12 @@ class CreateHistorialEntrenamientosTable extends Migration
     public function up()
     {
         Schema::create('historial_entrenamientos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('historialentrenamiento_id');
+        });
+
+        Schema::table('historial_entrenamientos', function (Blueprint $table) {
+            $table->foreign('entrenamiento_id')->references('entrenamiento_id')->on('entrenamientos');
+            $table->foreign('usuario_id')->references('usuario_id')->on('usuarios');
         });
     }
 

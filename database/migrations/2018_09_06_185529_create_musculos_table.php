@@ -14,9 +14,15 @@ class CreateMusculosTable extends Migration
     public function up()
     {
         Schema::create('musculos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('musculo_id');
+            $table->string('nombre',65);
+            $table->string('imagen',255);
         });
+
+        Schema::table('musculos', function (Blueprint $table) {
+            $table->foreign('regioncorporal_id')->references('regioncorporal_id')->on('region_corporals');
+        });
+
     }
 
     /**

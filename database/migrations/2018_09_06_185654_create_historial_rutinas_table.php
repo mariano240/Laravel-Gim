@@ -14,9 +14,15 @@ class CreateHistorialRutinasTable extends Migration
     public function up()
     {
         Schema::create('historial_rutinas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('historialrutina_id');
+            $table->date('fecha');
         });
+
+        Schema::table('historial_rutinas', function (Blueprint $table) {
+            $table->foreign('rutina_id')->references('rutina_id')->on('rutinas');
+            $table->foreign('historialentrenamiento_id')->references('historialentrenamiento_id')->on('historial_entrenamientos');
+        });
+
     }
 
     /**

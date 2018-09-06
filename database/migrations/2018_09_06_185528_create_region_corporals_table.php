@@ -14,8 +14,9 @@ class CreateRegionCorporalsTable extends Migration
     public function up()
     {
         Schema::create('region_corporals', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+            $table->increments('regioncorporal_id');
+            $table->string('nombre',65);
+            $table->string('imagen',255);
         });
     }
 
