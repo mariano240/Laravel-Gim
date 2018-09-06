@@ -352,6 +352,7 @@ class ComposerStaticInit73647d8a3f6360149419bfeaf8840da4
         'App\\Http\\Controllers\\MusculoController' => __DIR__ . '/../..' . '/app/Http/Controllers/MusculoController.php',
         'App\\Http\\Controllers\\PagoController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagoController.php',
         'App\\Http\\Controllers\\PaisController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaisController.php',
+        'App\\Http\\Controllers\\PromocionController' => __DIR__ . '/../..' . '/app/Http/Controllers/PromocionController.php',
         'App\\Http\\Controllers\\ProvinciaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProvinciaController.php',
         'App\\Http\\Controllers\\RegionCorporalController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegionCorporalController.php',
         'App\\Http\\Controllers\\RutinaController' => __DIR__ . '/../..' . '/app/Http/Controllers/RutinaController.php',

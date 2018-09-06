@@ -31,6 +31,7 @@ return array(
     'App\\Http\\Controllers\\MusculoController' => $baseDir . '/app/Http/Controllers/MusculoController.php',
     'App\\Http\\Controllers\\PagoController' => $baseDir . '/app/Http/Controllers/PagoController.php',
     'App\\Http\\Controllers\\PaisController' => $baseDir . '/app/Http/Controllers/PaisController.php',
+    'App\\Http\\Controllers\\PromocionController' => $baseDir . '/app/Http/Controllers/PromocionController.php',
     'App\\Http\\Controllers\\ProvinciaController' => $baseDir . '/app/Http/Controllers/ProvinciaController.php',
     'App\\Http\\Controllers\\RegionCorporalController' => $baseDir . '/app/Http/Controllers/RegionCorporalController.php',
     'App\\Http\\Controllers\\RutinaController' => $baseDir . '/app/Http/Controllers/RutinaController.php',
