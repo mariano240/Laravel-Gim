@@ -20,6 +20,11 @@ class PaisController extends Controller
 
         //     echo "<h1> $pais->nombre </h1>";
         // }
+        
+        // $paistest=new Pais();
+        // $paistest->nombre="paraguay";
+        // $paistest->save();
+        // echo "<h1>se esta intentando guardar</h1>";
     }
 
     /**

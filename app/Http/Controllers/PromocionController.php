@@ -26,7 +26,13 @@ class PromocionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $promocion= new Promocion();
+        $promocion->descripccion=$request->input('descripcion');
+        $promocion->fecha_inicio=$request->input('fecha_inicio');
+        $promocion->fecha_fin=$request->input('fecha_fin');
+        $promocion->descuento=$request->input('descuento');
+        $promocion->tiempo_extendido=$request->input('tiempo_extendido');
+        $promocion->save();
     }
 
     /**

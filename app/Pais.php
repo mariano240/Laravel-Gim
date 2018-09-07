@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pais extends Model
 {
-     public function provincias(){
+
+    public function provincias(){
         return $this->hasMany('app\Provincia');
     }
 }
