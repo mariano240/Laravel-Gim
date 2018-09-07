@@ -15,7 +15,9 @@ class MembresiaController extends Controller
      */
     public function index()
     {
-        //
+        $promocion=Membresia::where('membresia_id',1)->get();
+        
+        echo json_encode($promocion[0]->promociones());
     }
 
     /**

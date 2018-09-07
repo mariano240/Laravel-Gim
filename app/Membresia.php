@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Membresia extends Model
 {
     public function usuario(){
-        return $this->belongsTo('app\Usuario');
+        return $this->belongsTo('App\Usuario');
     }  
 
     public function promociones(){
-        return $this->belongsToMany('app\Promocion');
+        return $this->belongsToMany('App\Promocion');
     }
 
     public function pagos(){
-        return $this->hasMany('app\Pago');
+        return $this->hasMany('App\Pago');
     }
 }

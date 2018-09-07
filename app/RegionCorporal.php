@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class RegionCorporal extends Model
 {
     public function musculos(){
-        return $this->hasMany('app\Musculo');
+        return $this->hasMany('App\Musculo');
     }
 }

@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class HistorialEntrenamiento extends Model
 {
     public function usuario(){
-        return $this->belongsTo('app\Usuario');
+        return $this->belongsTo('App\Usuario');
     }
 
     public function entrenamiento(){
-        return $this->belongsTo('app\Entrenamiento');
+        return $this->belongsTo('App\Entrenamiento');
     }
 
     public function historialRutinas(){
-        return $this->hasMany('app\HistorialRutina');
+        return $this->hasMany('App\HistorialRutina');
     }
 }

@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     public function direccion(){
-        return $this->belongsTo('app\Direccion');
+        return $this->belongsTo('App\Direccion');
     }
 
     public function historialEntrenamientos(){
-        return $this->hasMany('app\HistorialEntrenamiento');
+        return $this->hasMany('App\HistorialEntrenamiento');
     }
 
     public function membresia(){
-        return $this->hasOne('app\Membresia');
+        return $this->hasOne('App\Membresia');
     }
 
     public function entrenamientos(){
-        return $this->belongsToMany('app\Entrenamiento');
+        return $this->belongsToMany('App\Entrenamiento');
     }
 }

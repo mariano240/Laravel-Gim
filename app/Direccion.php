@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Direccion extends Model
 {
     public function usuarios(){
-        return $this->hasMany('app\Usuario');
+        return $this->hasMany('App\Usuario');
     }
 
     public function localidad(){
-        return $this->belongsTo('app\Localidad');
+        return $this->belongsTo('App\Localidad');
     }
 }

@@ -15,7 +15,9 @@ class PromocionController extends Controller
      */
     public function index()
     {
-        //
+        $promocion=promocion::where('promocion_id',1)->get();
+        
+        echo json_encode($promocion[0]);
     }
 
     /**
@@ -43,7 +45,7 @@ class PromocionController extends Controller
      */
     public function show(Promocion $promocion)
     {
-        //
+       
     }
 
     /**

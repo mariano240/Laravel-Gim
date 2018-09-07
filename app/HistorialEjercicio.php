@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class HistorialEjercicio extends Model
 {
     public function historialRutina(){
-        return $this->belongsTo('app\HistorialRutina');
+        return $this->belongsTo('App\HistorialRutina');
     }
 
     public function ejercicio(){
-        return $this->belongsTo('app\Ejercicio');
+        return $this->belongsTo('App\Ejercicio');
     }
 }

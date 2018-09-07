@@ -8,6 +8,6 @@ class Pais extends Model
 {
 
     public function provincias(){
-        return $this->hasMany('app\Provincia');
+        return $this->hasMany('App\Provincia');
     }
 }

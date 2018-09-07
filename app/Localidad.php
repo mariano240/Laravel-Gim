@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Localidad extends Model
 {
     public function direcciones(){
-        return $this->hasMany('app\Direccion');
+        return $this->hasMany('App\Direccion');
     }
 
     public function provincia(){
-        return $this->belongsTo('app\Provincia');
+        return $this->belongsTo('App\Provincia');
     }
 
 }

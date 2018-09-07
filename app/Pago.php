@@ -8,6 +8,6 @@ class Pago extends Model
 {
 
     public function membresia(){
-        return $this->belongsTo('app\Membresia');
+        return $this->belongsTo('App\Membresia');
     }
 }
