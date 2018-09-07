@@ -14,7 +14,12 @@ class PaisController extends Controller
      */
     public function index()
     {
-        //
+        // $paises=Pais::all();
+
+        // foreach ($paises as $pais) {
+
+        //     echo "<h1> $pais->nombre </h1>";
+        // }
     }
 
     /**
