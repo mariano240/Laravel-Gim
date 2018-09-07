@@ -19,16 +19,6 @@ class RegionCorporalController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -46,17 +36,6 @@ class RegionCorporalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(RegionCorporal $regionCorporal)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\RegionCorporal  $regionCorporal
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RegionCorporal $regionCorporal)
     {
         //
     }

@@ -19,16 +19,6 @@ class MembresiaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -46,17 +36,6 @@ class MembresiaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Membresia $membresia)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Membresia  $membresia
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Membresia $membresia)
     {
         //
     }

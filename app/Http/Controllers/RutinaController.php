@@ -18,15 +18,6 @@ class RutinaController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -46,17 +37,6 @@ class RutinaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Rutina $rutina)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Rutina  $rutina
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Rutina $rutina)
     {
         //
     }
