@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePromocionsTable extends Migration
 {
-    /**
+      /**
      * Run the migrations.
      *
      * @return void
@@ -14,7 +14,7 @@ class CreatePromocionsTable extends Migration
     public function up()
     {
         Schema::create('promocions', function (Blueprint $table) {
-            $table->increments('promocion_id');
+            $table->increments('id');
             $table->string('descripccion',255)->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');

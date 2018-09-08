@@ -14,7 +14,7 @@ class CreateRutinasTable extends Migration
     public function up()
     {
         Schema::create('rutinas', function (Blueprint $table) {
-            $table->increments('rutina_id');
+            $table->increments('id');
             $table->string('nombre',65);
             $table->boolean('publica');
         });

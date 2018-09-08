@@ -14,20 +14,15 @@ class CreateDireccionsTable extends Migration
     public function up()
     {
         Schema::create('direccions', function (Blueprint $table) {
-            $table->increments('direccion_id');
+            $table->increments('id');
             $table->string('calle',65);
             $table->integer('altura')->nullable();
             $table->string('departamento',15)->nullable();
             $table->string('piso',15)->nullable();
-
-        });
-
-        Schema::table('direccions', function (Blueprint $table) {
             $table->unsignedInteger('localidad_id');
-            $table->foreign('localidad_id')->references('localidad_id')->on('localidads');
-        
-        });
+            $table->foreign('localidad_id')->references('id')->on('localidads');
 
+        });
     }
 
     /**

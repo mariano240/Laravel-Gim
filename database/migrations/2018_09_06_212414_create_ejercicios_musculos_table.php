@@ -14,7 +14,7 @@ class CreateEjerciciosMusculosTable extends Migration
     public function up()
     {
         Schema::create('ejercicio_musculo', function (Blueprint $table) {
-            $table->increments('ejerciciomusculo_id');
+            $table->increments('id');
             $table->integer('ejercicio_id');
             $table->integer('musculo_id');
         });

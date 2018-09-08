@@ -14,7 +14,7 @@ class CreateEntrenamientosRutinasTable extends Migration
     public function up()
     {
         Schema::create('entrenamiento_rutina', function (Blueprint $table) {
-            $table->increments('entrenamientorutina_id');
+            $table->increments('id');
             $table->integer('entrenamiento_id');
             $table->integer('rutina_id');
             $table->string('dia',65);

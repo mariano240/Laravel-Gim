@@ -15,9 +15,10 @@ class PromocionController extends Controller
      */
     public function index()
     {
-        $promocion=promocion::where('promocion_id',1)->get();
-        
+/*         $promocion=Promocion::where('id',1)->get();
         echo json_encode($promocion[0]);
+        echo "<br>";
+        echo json_encode($promocion[0]->membresias); */
     }
 
     /**
@@ -28,13 +29,13 @@ class PromocionController extends Controller
      */
     public function store(Request $request)
     {
-        $promocion= new Promocion();
+/*         $promocion= new Promocion();
         $promocion->descripccion=$request->input('descripcion');
         $promocion->fecha_inicio=$request->input('fecha_inicio');
         $promocion->fecha_fin=$request->input('fecha_fin');
         $promocion->descuento=$request->input('descuento');
         $promocion->tiempo_extendido=$request->input('tiempo_extendido');
-        $promocion->save();
+        $promocion->save(); */
     }
 
     /**
@@ -45,7 +46,27 @@ class PromocionController extends Controller
      */
     public function show(Promocion $promocion)
     {
+        
+        /* Usando foreach para acceder a cada membresia que posee a la promocion */
+        
+        echo $promocion;
+        $membresias=$promocion->membresias;
+        foreach ($membresias as $membresia) {
+            echo "<br>";
+            echo $membresia;
+        }
        
+        // echo "<br>";
+        // echo "<br>";
+        // /* Ingresando directamente a la membresia numero x e imprimiendo con formato json */
+        // echo json_encode($promocion->membresias[0]);
+       
+        // echo "<br>";
+        // echo "<br>";
+        
+        // /* Ingresando directamente a la membresia numero x y retornando */
+        // return $promocion->membresias[0];
+
     }
 
     /**

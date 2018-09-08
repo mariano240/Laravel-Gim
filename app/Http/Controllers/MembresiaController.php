@@ -15,9 +15,9 @@ class MembresiaController extends Controller
      */
     public function index()
     {
-        $promocion=Membresia::where('membresia_id',1)->get();
+/*         $promocion=Membresia::where('id',1)->get();
         
-        echo json_encode($promocion[0]->promociones());
+        echo json_encode($promocion[0]->promociones); */
     }
 
     /**
@@ -37,9 +37,21 @@ class MembresiaController extends Controller
      * @param  \App\Membresia  $membresia
      * @return \Illuminate\Http\Response
      */
-    public function show(Membresia $membresia)
+    public function show(Membresia $membresium)
     {
-        //
+        /* Usando foreach para acceder a cada promocion que posee una membresia */
+        echo $membresium;
+        $promociones=$membresium->promociones;
+        foreach ($promociones as $promocion) {
+            echo "<br>";
+            echo $promocion;
+        }
+       
+        // /* Ingresando directamente a la promocion numero x e imprimiendo con formato json */
+        // echo json_encode($membresium->promociones[0]);
+        
+        // /* Ingresando directamente a la promocion numero x y retornando */
+        // return $membresium->promociones[0];
     }
 
     /**

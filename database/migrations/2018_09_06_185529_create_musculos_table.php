@@ -14,14 +14,11 @@ class CreateMusculosTable extends Migration
     public function up()
     {
         Schema::create('musculos', function (Blueprint $table) {
-            $table->increments('musculo_id');
+            $table->increments('id');
             $table->string('nombre',65);
             $table->string('imagen',255);
-        });
-
-        Schema::table('musculos', function (Blueprint $table) {
             $table->unsignedInteger('regioncorporal_id');
-            $table->foreign('regioncorporal_id')->references('regioncorporal_id')->on('region_corporals');
+            $table->foreign('regioncorporal_id')->references('id')->on('region_corporals');
         });
 
     }

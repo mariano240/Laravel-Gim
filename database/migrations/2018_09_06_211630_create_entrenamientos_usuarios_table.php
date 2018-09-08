@@ -14,7 +14,7 @@ class CreateEntrenamientosUsuariosTable extends Migration
     public function up()
     {
         Schema::create('entrenamiento_usuario', function (Blueprint $table) {
-            $table->increments('entrenamientousuario_id');
+            $table->increments('id');
             $table->integer('usuario_id');
             $table->integer('entrenamiento_id');
             $table->boolean('modificar');
