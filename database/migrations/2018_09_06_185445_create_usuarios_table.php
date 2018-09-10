@@ -20,7 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('nombre',65);
             $table->string('apellido',65);
             $table->integer('dni')->unique();
-            $table->string('email',255)->unique();
+            $table->string('email',100)->unique();
             $table->string('telefono',255);
             $table->string('contrasena',255);
             $table->unsignedInteger('membresia_id');
