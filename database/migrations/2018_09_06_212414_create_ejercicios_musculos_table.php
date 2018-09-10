@@ -15,8 +15,10 @@ class CreateEjerciciosMusculosTable extends Migration
     {
         Schema::create('ejercicio_musculo', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ejercicio_id');
-            $table->integer('musculo_id');
+            $table->unsignedInteger('ejercicio_id');
+            $table->unsignedInteger('musculo_id');
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios');
+            $table->foreign('musculo_id')->references('id')->on('muscolos'); 
         });
     }
 

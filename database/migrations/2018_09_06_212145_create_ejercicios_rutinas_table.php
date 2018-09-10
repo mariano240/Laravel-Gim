@@ -15,13 +15,15 @@ class CreateEjerciciosRutinasTable extends Migration
     {
         Schema::create('ejercicio_rutina', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('rutina_id');
-            $table->integer('ejercicio_id');
+            $table->unsignedInteger('rutina_id');
+            $table->unsignedInteger('ejercicio_id');
             $table->integer('peso_carga')->nullable();
             $table->integer('cantidad_repeticiones')->nullable();
             $table->integer('cantidad_series')->nullable();
             $table->integer('tiempo_descanso')->nullable();
             $table->integer('tiempo_cardio')->nullable();
+            $table->foreign('rutina_id')->references('id')->on('rutinas');
+            $table->foreign('ejercicio_id')->references('id')->on('ejercicios'); 
         });
     }
 

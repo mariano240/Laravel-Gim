@@ -16,10 +16,10 @@ class CreateMembresiasPromocionsTable extends Migration
         Schema::create('membresia_promocion', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fecha_adquisicion');
-            $table->Integer('membresia_id');
-            $table->Integer('promocion_id');
-/*             $table->foreign('membresia_id')->references('id')->on('membresias');
-            $table->foreign('promocion_id')->references('id')->on('promocions'); */
+            $table->unsignedInteger('membresia_id');
+            $table->unsignedInteger('promocion_id');
+            $table->foreign('membresia_id')->references('id')->on('membresias');
+            $table->foreign('promocion_id')->references('id')->on('promocions'); 
         });
     }
 

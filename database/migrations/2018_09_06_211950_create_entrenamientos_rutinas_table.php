@@ -15,9 +15,11 @@ class CreateEntrenamientosRutinasTable extends Migration
     {
         Schema::create('entrenamiento_rutina', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('entrenamiento_id');
-            $table->integer('rutina_id');
+            $table->unsignedInteger('entrenamiento_id');
+            $table->unsignedInteger('rutina_id');
             $table->string('dia',65);
+            $table->foreign('rutina_id')->references('id')->on('rutinas');
+            $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos'); 
         });
     }
 

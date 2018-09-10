@@ -15,10 +15,12 @@ class CreateEntrenamientosUsuariosTable extends Migration
     {
         Schema::create('entrenamiento_usuario', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('usuario_id');
-            $table->integer('entrenamiento_id');
+            $table->unsignedInteger('usuario_id');
+            $table->unsignedInteger('entrenamiento_id');
             $table->boolean('modificar');
             $table->date('fecha_asociasion');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos'); 
         });
     }
 
