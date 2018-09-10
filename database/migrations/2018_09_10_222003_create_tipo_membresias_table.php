@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMembresiasTable extends Migration
+class CreateTipoMembresiasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateMembresiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('membresias', function (Blueprint $table) {
+        Schema::create('tipo_membresias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('estado',255);
-            $table->date('fecha_pago');
-            $table->date('fecha_vencimiento');
+            $table->string('nombre',65)->unique();
+            $table->string('descripcion',255)->nullable();
             $table->float('costo',8,2);
         });
     }
@@ -29,6 +28,6 @@ class CreateMembresiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membresias');
+        Schema::dropIfExists('tipo_membresias');
     }
 }

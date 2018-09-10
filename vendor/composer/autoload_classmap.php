@@ -58,6 +58,7 @@ return array(
     'App\\Provincia' => $baseDir . '/app/Provincia.php',
     'App\\RegionCorporal' => $baseDir . '/app/RegionCorporal.php',
     'App\\Rutina' => $baseDir . '/app/Rutina.php',
+    'App\\TipoMembresia' => $baseDir . '/app/TipoMembresia.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\Usuario' => $baseDir . '/app/Usuario.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
