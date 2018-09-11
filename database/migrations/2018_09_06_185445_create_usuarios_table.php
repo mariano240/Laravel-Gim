@@ -23,6 +23,7 @@ class CreateUsuariosTable extends Migration
             $table->string('email',100)->unique();
             $table->string('telefono',255);
             $table->string('contrasena',255);
+            $table->date('fecha_alta');
             $table->string('estado',255)->nullable();
             $table->unsignedInteger('membresia_id');
             $table->unsignedInteger('direccion_id');
