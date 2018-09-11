@@ -15,7 +15,7 @@ class CreateTipoPagosTable extends Migration
     {
         Schema::create('tipo_pagos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',65);
+            $table->string('nombre',65)->unique();
             $table->string('estado',65);
             $table->string('descripcion',255);
         });
