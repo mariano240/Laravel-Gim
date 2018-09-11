@@ -17,7 +17,7 @@ class CreateTipoPagosTable extends Migration
             $table->increments('id');
             $table->string('nombre',65)->unique();
             $table->string('estado',65);
-            $table->string('descripcion',255);
+            $table->string('descripcion',255)->nullable();
         });
     }
 

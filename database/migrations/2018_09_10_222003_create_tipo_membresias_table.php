@@ -16,6 +16,7 @@ class CreateTipoMembresiasTable extends Migration
         Schema::create('tipo_membresias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',65)->unique();
+            $table->string('estado',65);
             $table->string('descripcion',255)->nullable();
             $table->float('costo',8,2);
         });
