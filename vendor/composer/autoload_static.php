@@ -327,6 +327,7 @@ class ComposerStaticInit73647d8a3f6360149419bfeaf8840da4
     );
 
     public static $classMap = array (
+        'App\\Acceso' => __DIR__ . '/../..' . '/app/Acceso.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Direccion' => __DIR__ . '/../..' . '/app/Direccion.php',
         'App\\Ejercicio' => __DIR__ . '/../..' . '/app/Ejercicio.php',
@@ -357,6 +358,7 @@ class ComposerStaticInit73647d8a3f6360149419bfeaf8840da4
         'App\\Http\\Controllers\\RegionCorporalController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegionCorporalController.php',
         'App\\Http\\Controllers\\RutinaController' => __DIR__ . '/../..' . '/app/Http/Controllers/RutinaController.php',
         'App\\Http\\Controllers\\TipoMembresiaController' => __DIR__ . '/../..' . '/app/Http/Controllers/TipoMembresiaController.php',
+        'App\\Http\\Controllers\\TipoPagoController' => __DIR__ . '/../..' . '/app/Http/Controllers/TipoPagoController.php',
         'App\\Http\\Controllers\\TipoPromocionController' => __DIR__ . '/../..' . '/app/Http/Controllers/TipoPromocionController.php',
         'App\\Http\\Controllers\\UsuarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/UsuarioController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
