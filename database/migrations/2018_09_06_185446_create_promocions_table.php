@@ -20,7 +20,7 @@ class CreatePromocionsTable extends Migration
             $table->date('fecha_adquisicion');
             $table->integer('descuento')->nullable();
             $table->integer('tiempo_extendido')->nullable();
-            $table->unsignedInteger('membrecia_id');
+            $table->unsignedInteger('membresia_id');
             $table->foreign('membresia_id')->references('id')->on('membresias');
         });
     }

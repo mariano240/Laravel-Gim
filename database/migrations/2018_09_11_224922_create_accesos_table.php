@@ -15,7 +15,7 @@ class CreateAccesosTable extends Migration
     {
         Schema::create('accesos', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps('fecha');
+            $table->timestamp('fecha');
             $table->unsignedInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('usuarios');
         });
