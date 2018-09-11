@@ -11,7 +11,7 @@ class Membresia extends Model
     }  
 
     public function promociones(){
-        return $this->belongsToMany('App\Promocion');
+        return $this->hasMany('App\Promocion');
     }
 
     public function pagos(){

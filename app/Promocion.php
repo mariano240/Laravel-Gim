@@ -8,6 +8,6 @@ class Promocion extends Model
 {
 
     public function membresias(){
-        return $this->belongsToMany('App\Membresia');
+        return $this->belongsTo('App\Membresia');
     }
 }

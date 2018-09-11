@@ -4,24 +4,25 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePromocionsTable extends Migration
+class CreateTipoPromocionsTable extends Migration
 {
-      /**
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('promocions', function (Blueprint $table) {
+        Schema::create('tipo_promocions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',100);
+            $table->string('estado',100);
             $table->string('descripccion',255)->nullable();
-            $table->date('fecha_adquisicion');
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
             $table->integer('descuento')->nullable();
             $table->integer('tiempo_extendido')->nullable();
-            $table->unsignedInteger('membrecia_id');
-            $table->foreign('membresia_id')->references('id')->on('membresias');
+
         });
     }
 
@@ -32,6 +33,6 @@ class CreatePromocionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('promocions');
+        Schema::dropIfExists('tipo_promocions');
     }
 }
