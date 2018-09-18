@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Entrenamiento extends Model
 {
     public function usuarios(){
-        return $this->belongsToMany('App\Usuario');
+        return $this->belongsToMany('App\User');
     }
 
     public function rutinas(){

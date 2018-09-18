@@ -19,7 +19,7 @@ class CreateEntrenamientosUsuariosTable extends Migration
             $table->unsignedInteger('entrenamiento_id');
             $table->boolean('modificar');
             $table->date('fecha_asociasion');
-            $table->foreign('usuario_id')->references('id')->on('usuarios');
+            $table->foreign('usuario_id')->references('id')->on('users');
             $table->foreign('entrenamiento_id')->references('id')->on('entrenamientos'); 
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMembresiasTable extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateMembresiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('membresias', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('estado',255);
-            $table->date('fecha_pago');
-            $table->date('fecha_vencimiento');
-            $table->float('costo',8,2);
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email',100)->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateMembresiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('membresias');
+        Schema::dropIfExists('password_resets');
     }
 }
