@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/{bandera}', function ($bandera) {
+Route::get('/', function () {
     //return view('welcome');
-    return view('panelInicial.barrainicio',  ['bandera' => $bandera]);
+    return view('panelInicial.barrainicio');
 });
+
+Route::get('/fila1', function () {
+    //return view('welcome');
+    return view('secciones.fila1');
+});
+Route::get('/fila2', function () {
+    //return view('welcome');
+    return view('secciones.fila2');
+});
+
 Route::get('/home', 'HomeController@index');
 //Auth::routes();
 

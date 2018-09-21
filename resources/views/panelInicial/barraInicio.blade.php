@@ -14,33 +14,29 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
-    <link href="../assets/css/material-dashboard.css?v=2.0.2" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../gimnasiocss/gimnasio.css" rel="stylesheet" />
+    <link href="../assets/css/material-dashboard.css" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project
     <link href="../assets/demo/demo.css" rel="stylesheet" />
+     -->
 </head>
 
 <body class="">
     <div class="wrapper ">
 
         <!--   div de panel lateral   -->
-        <div class="sidebar" data-color="rose" data-background-color="black" data-image="../assets/img/sidebar-1.jpg">
+        <div class="sidebar" data-color="rose" data-background-color="black" data-image="../assets/img/gym3.jpg">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
         Tip 2: you can also add an image using data-image tag
     -->
-            <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    CT
-                </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    Creative Tim
-                </a>
-            </div>
+            
             <div class="sidebar-wrapper">
-                <div class="user">
-                    <div class="photo">
-                        <img src="../assets/img/faces/avatar.jpg" />
+                <div class="logGim">
+                <div class="card-profile">
+                    <div class="card-avatar">
+                            <img src="../assets/img/faces/avatar.jpg" />
                     </div>
                     <div class="user-info">
                         <a data-toggle="collapse" href="#collapseExample" class="username">
@@ -73,64 +69,40 @@
                         </div>
                     </div>
                 </div>
+            </div>
                 <ul class="nav">
                     <li class="nav-item active ">
-                        <a class="nav-link" href="../examples/dashboard.html">
+                        <a class="nav-link">
                             <i class="material-icons">dashboard</i>
                             <p> Dashboard </p>
                         </a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
-                            <i class="material-icons">image</i>
-                            <p> Pages
+                            <i class="material-icons">account_circle</i>
+                            <p> Gestionar Cliente
                                 <b class="caret"></b>
                             </p>
                         </a>
                         <div class="collapse" id="pagesExamples">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/pricing.html">
-                                        <span class="sidebar-mini"> P </span>
-                                        <span class="sidebar-normal"> Pricing </span>
+                                    <a class="nav-link" href="">
+                                        <span class="sidebar-mini"> AC </span>
+                                        <span class="sidebar-normal"> Alta Cliente </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/rtl.html">
-                                        <span class="sidebar-mini"> RS </span>
-                                        <span class="sidebar-normal"> RTL Support </span>
+                                    <a class="nav-link" href="">
+                                        <span class="sidebar-mini"> MC </span>
+                                        <span class="sidebar-normal"> Modificar Cliente</span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/timeline.html">
-                                        <span class="sidebar-mini"> T </span>
-                                        <span class="sidebar-normal"> Timeline </span>
+                                    <a class="nav-link" href="">
+                                        <span class="sidebar-mini"> BC </span>
+                                        <span class="sidebar-normal"> Baja Cliente </span>
                                     </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/login.html">
-                                        <span class="sidebar-mini"> LP </span>
-                                        <span class="sidebar-normal"> Login Page </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/register.html">
-                                        <span class="sidebar-mini"> RP </span>
-                                        <span class="sidebar-normal"> Register Page </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/lock.html">
-                                        <span class="sidebar-mini"> LSP </span>
-                                        <span class="sidebar-normal"> Lock Screen Page </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/pages/user.html">
-                                        <span class="sidebar-mini"> UP </span>
-                                        <span class="sidebar-normal"> User Profile </span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </li>
@@ -168,7 +140,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="../examples/components/grid.html">
+                                    <a class="nav-link" href="">
                                         <span class="sidebar-mini"> GS </span>
                                         <span class="sidebar-normal"> Grid System </span>
                                     </a>
@@ -334,31 +306,34 @@
 
             <!-- End Navbar -->
 
-            <div class="content">
+            <div class="content" id="disparador">
                 <div class="content">
                     <div class="container-fluid">
                         <!-- comienzo del contenido -->
 
+                        <div id="contenido">
+
+                        </div>
                         @yield('fila1')
+
                         <!-- fila1 -->
 
-                         <!-- End fila1 -->
+                        <!-- End fila1 -->
                         @yield("fila2")
                         <!-- fila2 -->
-                        @if($bandera)
 
-                            @include('secciones.fila2')
-                         <!-- End fila2 -->
-                        @endif
+
+                        <!-- End fila2 -->
+
                         @yield("fila3")
                         <!-- fila3 -->
 
-                         <!-- End fila3 -->
+                        <!-- End fila3 -->
 
                         @yield("fila4")
                         <!-- fila4 -->
 
-                         <!-- End fila4 -->
+                        <!-- End fila4 -->
                     </div>
                 </div>
             </div>
@@ -370,12 +345,12 @@
     </div>
 
 
-    
+
     @yield("configuracion")
     <!-- configuracion -->
 
     <!-- End configuracion -->
-    
+
 
 
     <!--   Core JS Files   -->
@@ -411,14 +386,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <!-- Library for adding dinamically elements -->
     <script src="../assets/js/plugins/arrive.min.js"></script>
-    <!--  Google Maps Plugin    -->
+    <!--  Google Maps Plugin   
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+     -->
     <!-- Chartist JS -->
     <script src="../assets/js/plugins/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/material-dashboard.min.js?v=2.0.2" type="text/javascript"></script>
+    <script src="../assets/js/material-dashboard.min.js" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="../assets/demo/demo.js"></script>
     <script>
@@ -442,8 +418,24 @@
                     }
 
                 }
+                /*
+                estos son ejemplos para incluir html sin recargar pagina
+                para esto se debe incluir en la web la ruta correspondiente
+                se supone un GET sino se le pasan datos
+                $('#disparador').on("click",function(e){
+                    
+                        $('#contenido').load("fila1");
+                    
+                });
 
-                $('.fixed-plugin a').click(function (event) {
+                $('#contenido').on("click",function(e){
+                    
+                    $('#contenido').load("fila2");
+                
+            });
+            */
+
+                $('#contenido').click(function (event) {
                     // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
                     if ($(this).hasClass('switch-trigger')) {
                         if (event.stopPropagation) {
