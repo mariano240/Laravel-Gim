@@ -25,13 +25,13 @@
                                 </a>
                             </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#account" data-toggle="tab" role="tab">
+                            <a class="nav-link" href="#membresia" data-toggle="tab" role="tab">
                                     <i class="material-icons">card_membership</i>
                                     Promoción-Membresia
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#address" data-toggle="tab" role="tab">
+                            <a class="nav-link" href="#account" data-toggle="tab" role="tab">
                                     <i class="material-icons">attach_money</i>
                                     Pago
                             </a>
@@ -134,9 +134,144 @@
 
                         </div>
 
+                        <div class="tab-pane" id="membresia">
+                                <h5 class="info-text"> Membresias y promociones </h5>
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                    <div class="card card-stats">
+                                                            <div class="card-header card-header-info card-header-icon">
+                                                              <div class="card-icon">
+                                                                <i class="material-icons">local_offer</i>
+                                                              </div>
+                                                              <p class="card-category">Estandar <small>Promoción</small></p>
+                                                             
+                                                              <h3 class="card-title"><strike>$400</strike> -> <strong>$300</strong> </h3>
+                                                            </div>
+                                                             <button class="btn btn-primary btn-round btn-sm ">Obtener<div class="ripple-container"></div></button>
+                                                          </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                    <div class="card card-stats">
+                                                            <div class="card-header card-header-success card-header-icon">
+                                                              <div class="card-icon">
+                                                                <i class="material-icons">local_offer</i>
+                                                              </div>
+                                                              <p class="card-category">Premiun</p>
+                                                             
+                                                              <h3 class="card-title">600$</h3>
+                                                            </div>
+                                                             <button class="btn btn-primary btn-round btn-sm ">Obtener<div class="ripple-container"></div></button>
+                                                          </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                    <div class="card card-stats">
+                                                            <div class="card-header card-header-warning card-header-icon">
+                                                              <div class="card-icon">
+                                                                <i class="material-icons">local_offer</i>
+                                                              </div>
+                                                              <p class="card-category">Premium Gold</p>
+                                                             
+                                                              <h3 class="card-title">1100$</h3>
+                                                            </div>
+                                                             <button class="btn btn-primary btn-round btn-sm ">Obtener<div class="ripple-container"></div></button>
+                                                          </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                        <div class="card card-stats">
+                                                                <div class="card-header card-header-info card-header-icon">
+                                                                  <div class="card-icon">
+                                                                    <i class="material-icons">style</i>
+                                                                  </div>
+                                                                  <p class="card-category">Estandar Mensual</p>
+                                                                 
+                                                                  <h3 class="card-title">400$</h3>
+                                                                </div>
+                                                                 <button class="btn btn-primary btn-round btn-sm ">Obtener<div class="ripple-container"></div></button>
+                                                              </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                        <div class="card card-stats">
+                                                                <div class="card-header card-header-success card-header-icon">
+                                                                  <div class="card-icon">
+                                                                    <i class="material-icons">style</i>
+                                                                  </div>
+                                                                  <p class="card-category">Estandar Mensual</p>
+                                                                 
+                                                                  <h3 class="card-title">400$</h3>
+                                                                </div>
+                                                                 <button class="btn btn-primary btn-round btn-sm ">Obtener<div class="ripple-container"></div></button>
+                                                              </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                        <div class="card card-stats">
+                                                                <div class="card-header card-header-warning card-header-icon">
+                                                                  <div class="card-icon">
+                                                                    <i class="material-icons">style</i>
+                                                                  </div>
+                                                                  <p class="card-category">Estandar Mensual</p>
+                                                                 
+                                                                  <h3 class="card-title">400$</h3>
+                                                                </div>
+                                                                 <button class="btn btn-primary btn-round btn-sm ">Obtener<div class="ripple-container"></div></button>
+                                                              </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                                <table class="table table-shopping">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="text-center"></th>
+                                                            <th class="text-center">Precio</th>
+                                                            <th class="text-center">Promoción</th>
+                                                            <th class="text-center">Subtotal</th>
+                                                            <th class="text-center">Cantidad Meses</th>
+                                                            
+                                                            <th class="text-center">Total</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="td-name">
+                                                                <a href="#jacket">Estandar</a>
+                                                                <br><small>Acceso a Maquinas</small>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                400
+                                                            </td>
+                                                            <td class="text-center">
+                                                                20%
+                                                            </td>
+                                                            <td class="text-center">
+                                                                $300
+                                                            </td>
+                                                            
+                                                            <td class="text-center">
+                                                                    <input type="number" class="form-control" id="exampleemalil" name="dni" required="">
+                                                            </td>
+                                                            <td class="text-center">
+                                                                549
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                              </div>
+                                </div>
+                            </div>
+
 
                         <div class="tab-pane" id="account">
-                            <h5 class="info-text"> What are you doing? (checkboxes) </h5>
+                            <h5 class="info-text"> Forma de Pago </h5>
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">
                                     <div class="row">
