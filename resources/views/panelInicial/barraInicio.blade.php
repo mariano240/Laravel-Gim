@@ -302,7 +302,7 @@
 
             @yield('navbar')
             <!-- Navbar -->
-
+            @include('secciones.navbar')
             <!-- End Navbar -->
             <div class="content" id="disparador">
                 <div class="content">
