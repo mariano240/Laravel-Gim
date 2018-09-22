@@ -58,7 +58,7 @@
                             </span>
                           </div>
                           <div class="card-footer justify-content-center">
-                            <a href="#pablo" class="btn btn-rose btn-link btn-lg">INGRESAR</a>
+                            <a href="/" class="btn btn-rose btn-link btn-lg">INGRESAR</a>
                           </div>
                         </div>
                       </form>
