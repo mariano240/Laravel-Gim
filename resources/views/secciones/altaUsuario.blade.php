@@ -184,66 +184,61 @@
                                     <h5 class="info-text"> ¿Donde vive?</h5>
                                 </div>
 
-                                <div class="col-sm-12">
-                                        <div class="btn-group">
-                                                <button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        País   
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                  <a class="dropdown-item" href="#">Action</a>
-                                                  <a class="dropdown-item" href="#">Another action</a>
-                                                  <a class="dropdown-item" href="#">Something else here</a>
-                                                  <div class="dropdown-divider"></div>
-                                                  <a class="dropdown-item" href="#">Separated link</a>
-                                                </div>
-
-                                                <button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                        Provincia
-                                                      </button>
-                                                      <div class="dropdown-menu">
-                                                        <a class="dropdown-item" href="#">Action</a>
-                                                        <a class="dropdown-item" href="#">Another action</a>
-                                                        <a class="dropdown-item" href="#">Something else here</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Separated link</a>
-                                                      </div>
-                                              
-
-                                              <button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Localidad
-                                                  </button>
-                                                  <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Separated link</a>
-                                                  </div>
-                                          </div>
+                                <div class="col-sm-4">
+                                        <select class="custom-select">
+                                                <option selected>Sleccione País</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                              </select>
                                     </div>
+                                 <div class="col-sm-4">
+                                        <select class="custom-select">
+                                                <option selected>Seleccione Provincia</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                              </select>
+                                     </div>
+                                 <div class="col-sm-4">
+                                        <select class="custom-select">
+                                                <option selected>Sleccione Localidad</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                              </select>
+                                        </div>
 
-                                
-                               
+                                   <div class="col-sm-12">
+                                    <br>   
+                                    </div>     
+
                                 <div class="col-sm-7">
                                     <div class="form-group">
-                                        <label>Street Name</label>
+                                        <label>Calle</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <label>Street No.</label>
+                                        <label>Altura</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-5">
                                     <div class="form-group">
-                                        <label>City</label>
+                                        <label>Departamento</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <label>Piso</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
 
                                 
                             </div>
