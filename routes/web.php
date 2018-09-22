@@ -16,9 +16,9 @@ Route::get('/', function () {
     return view('panelInicial.barrainicio');
 });
 
-Route::get('/fila1', function () {
+Route::get('/altaCliente', function () {
     //return view('welcome');
-    return view('secciones.fila1');
+    return view('secciones.altaUsuario');
 });
 Route::get('/fila2', function () {
     //return view('welcome');

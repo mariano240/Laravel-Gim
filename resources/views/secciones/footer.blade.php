@@ -1,4 +1,3 @@
-@extends('panelInicial.barraInicio')
 
 <footer class="footer">
         <div class="container-fluid">

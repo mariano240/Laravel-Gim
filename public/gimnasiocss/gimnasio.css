@@ -2,3 +2,8 @@
   margin: 70px auto 0;
 
 }
+.card-wizard .wizard-navigation .nav-item .nav-link.active{
+  color: #fff !important;
+  background-color: #e91e63 !important;
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4) !important;
+}
