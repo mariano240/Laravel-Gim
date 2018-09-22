@@ -229,7 +229,7 @@
                                                 <table class="table table-shopping">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-center"></th>
+                                                            <th class="text-center">Membresia</th>
                                                             <th class="text-center">Precio</th>
                                                             <th class="text-center">Promoción</th>
                                                             <th class="text-center">Subtotal</th>
@@ -279,27 +279,27 @@
                                             <div class="choice" data-toggle="wizard-checkbox">
                                                 <input type="checkbox" name="jobb" value="Design">
                                                 <div class="icon">
-                                                    <i class="fa fa-pencil"></i>
+                                                    <i class="fa fa-credit-card"></i>
                                                 </div>
-                                                <h6>Design</h6>
+                                                <h6>Tarjeta de Credito</h6>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="choice" data-toggle="wizard-checkbox">
                                                 <input type="checkbox" name="jobb" value="Code">
                                                 <div class="icon">
-                                                    <i class="fa fa-terminal"></i>
+                                                     <i class="fa fa-credit-card-alt"></i>
                                                 </div>
-                                                <h6>Code</h6>
+                                                <h6>Tarjeta de Debito</h6>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="choice" data-toggle="wizard-checkbox">
                                                 <input type="checkbox" name="jobb" value="Develop">
                                                 <div class="icon">
-                                                    <i class="fa fa-laptop"></i>
+                                                        <i class="fa fa-money"></i>
                                                 </div>
-                                                <h6>Develop</h6>
+                                                <h6>Efectivo</h6>
                                             </div>
                                             <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select"
                                                 data-size="7">
