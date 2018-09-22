@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active" id="about">
-                            <h5 class="info-text"> Let's start with the basic information (with validation)</h5>
+                            <h5 class="info-text"> Acerca del cliente</h5>
                             <div class="row justify-content-center">
                                 <!-- comienzo de datos personales -->
                                 <!-- imagen -->
@@ -59,6 +59,7 @@
                                 <!-- nombre y apellido -->
                                 <div class="col-sm-6">
                                     <div class="input-group form-control-lg">
+                                        
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="material-icons">face</i>
@@ -66,7 +67,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInput1" class="bmd-label-floating">Nombre</label>
-                                            <input type="text" class="form-control" id="exampleInput1" name="apellido"
+                                            <input type="text" class="form-control" id="exampleInput1" name="nombre"
                                                 required>
                                         </div>
                                     </div>
@@ -94,7 +95,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInput1" class="bmd-label-floating">DNI</label>
-                                            <input type="email" class="form-control" id="exampleemalil" name="dni"
+                                            <input type="number" class="form-control" id="exampleemalil" name="dni"
                                                 required>
                                         </div>
                                     </div>
@@ -107,7 +108,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInput1" class="bmd-label-floating">Teléfono</label>
-                                            <input type="email" class="form-control" id="exampleemalil" name="telefono"
+                                            <input type="text" class="form-control" id="exampleemalil" name="telefono"
                                                 required>
                                         </div>
                                     </div>
@@ -223,7 +224,7 @@
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label>Altura</label>
-                                        <input type="text" class="form-control">
+                                        <input type="number" class="form-control">
                                     </div>
                                 </div>
 

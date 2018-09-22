@@ -16,6 +16,11 @@ Route::get('/', function () {
     return view('panelInicial.barrainicio');
 });
 
+Route::get('/login', function () {
+    //return view('welcome');
+    return view('panelInicial.login');
+});
+
 Route::get('/altaCliente', function () {
     //return view('welcome');
     return view('secciones.altaUsuario');
