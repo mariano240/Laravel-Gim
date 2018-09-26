@@ -21,17 +21,14 @@ Route::get('/login', function () {
     return view('panelInicial.login');
 });
 
-Route::get('/altaCliente', function () {
-    //return view('welcome');
-    return view('secciones.altaUsuario');
-});
-Route::get('/fila2', function () {
-    //return view('welcome');
-    return view('secciones.fila2');
-});
+Route::get('/altaCliente','UsuarioController@precargarModal');
+
+
+Route::post('/registrar', 'UsuarioController@store')->name('resgistrar');
 
 Route::get('/home', 'HomeController@index');
-//Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 

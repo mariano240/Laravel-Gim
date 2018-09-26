@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Usuario;
+use App\User;
+use App\Pais;
+use App\Provincia;
+use App\Localidad;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use \App\Http\Requests\altaUsuarioRequest;
 
 class UsuarioController extends Controller
 {
@@ -18,15 +23,52 @@ class UsuarioController extends Controller
         //
     }
 
+    public function precargarModal()
+    {
+        $paises=Pais::all();
+        //se setea por defecto argentina y sus provincias
+        $provincias=Provincia::where('pais_id',1)->get();
+        $localidades=Localidad::where('provincia_id',22)->get();
+
+        return view('secciones.altaUsuario',compact('paises', 'provincias', 'localidades'));
+    }
+
+    public function cargaProvincias($id_pais)
+    {
+        $provincias=Provincia::where('pais_id',$id_pais)->get();
+        return $provincias;
+    }
+
+    public function cargaLocalidades($id_provincia)
+    {
+        $localidades=Localidad::where('provincia_id',$id_provincia)->get();
+        return $localidades;
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(altaUsuarioRequest $request)
+    {       
+        
+        
+        $usuario=new User;
+        $usuario->nombre = $request['nombre'];
+        $usuario->apellido = $request['apellido'];
+        $usuario->dni = $request->input('dni');
+        $usuario->email = $request['email'];
+        $usuario->password = Hash::make($request['dni']);
+        $usuario->tipo_usuario = 'cliente';
+        $usuario->nombre_usuario = $request['dni'];
+        $usuario->telefono = $request['telefono'];
+        $usuario->estado = 'activo';
+        $usuario->direccion_id = 1;
+        $usuario->fecha_alta = date('y/m/d');
+        $usuario->created_at = date('y/m/d h:i:s');
+        $usuario->save();
+
     }
 
     /**

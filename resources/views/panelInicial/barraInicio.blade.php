@@ -410,13 +410,16 @@
 
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/material-dashboard.min.js?v=2.0.2" type="text/javascript"></script>
+
     <script>
         $(document).ready(function () {
 
             $('#altaCliente').on("click", function (e) {
                 $('#contenido').load("altaCliente");
+                $.getScript("js/altaUsuario.js");
             });
         });
+
 
     </script>
 

@@ -17,6 +17,10 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
+
+Route::get('provincias/{id}','UsuarioController@cargaProvincias');
+Route::get('localidades/{id}','UsuarioController@cargaLocalidades');
+
 Route::apiResource('direccion','DireccionController');
 Route::apiResource('ejercicio','EjercicioController');
 Route::apiResource('entrenamiento','EntrenamientoController');

@@ -2,7 +2,8 @@
     <!--      Wizard container        -->
     <div class="wizard-container">
         <div class="card card-wizard active" data-color="rose" id="wizardProfile">
-            <form action="" method="">
+            <form id="formAltaUsuario" method="" action="">
+                    {{csrf_field()}}
                 <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                 <div class="card-header text-center">
                     <h3 class="card-title">
@@ -256,7 +257,7 @@
                                                             </td>
                                                             
                                                             <td class="text-center">
-                                                                    <input type="number" class="form-control" id="exampleemalil" name="dni" required="">
+                                                                    <input type="number" class="form-control" id="exampleemalil" name="" required="">
                                                             </td>
                                                             <td class="text-center">
                                                                 549
@@ -321,27 +322,32 @@
                                 </div>
 
                                 <div class="col-sm-4">
-                                        <select class="custom-select">
-                                                <option selected>Sleccione País</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                        <select class="custom-select" id="select-pais">
+                                               @foreach ($paises as $pais)
+                                               <option value={{$pais['id']}}>{{$pais['nombre']}}</option>
+                                               @endforeach
                                               </select>
                                     </div>
                                  <div class="col-sm-4">
-                                        <select class="custom-select">
-                                                <option selected>Seleccione Provincia</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                        <select class="custom-select" id="select-provincia">
+                                                @foreach ($provincias as $provincia)
+                                                    @if ($provincia['id']==22)
+                                                    <option selected value={{$provincia['id']}}>{{$provincia['nombre']}}</option>
+                                                    @else
+                                                    <option value={{$provincia['id']}}>{{$provincia['nombre']}}</option>
+                                                    @endif
+                                               @endforeach
                                               </select>
                                      </div>
                                  <div class="col-sm-4">
-                                        <select class="custom-select">
-                                                <option selected>Sleccione Localidad</option>
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                        <select class="custom-select" id="select-localidad">
+                                                @foreach ($localidades as $localidad)
+                                                    @if ($localidad['id']==1885)
+                                                    <option selected value={{$localidad['id']}}>{{$localidad['nombre']}}</option>
+                                                    @else
+                                                    <option value={{$localidad['id']}}>{{$localidad['nombre']}}</option>
+                                                    @endif
+                                               @endforeach
                                               </select>
                                         </div>
 
@@ -352,27 +358,27 @@
                                 <div class="col-sm-7">
                                     <div class="form-group">
                                         <label>Calle</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="calle">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <label>Altura</label>
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" name="altura">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-5">
                                     <div class="form-group">
                                         <label>Departamento</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="departamento">
                                     </div>
                                 </div>
                                 <div class="col-sm-5">
                                         <div class="form-group">
                                             <label>Piso</label>
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" name="piso">
                                         </div>
                                     </div>
 
@@ -391,7 +397,7 @@
                             value="Previous">
                     </div>
                     <div class="ml-auto">
-                        <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" name="next" value="Next">
+                        <input type="button" id="postAltaCliente" class="btn btn-next btn-fill btn-rose btn-wd" name="next" value="Next" >
                         <input type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish"
                             style="display: none;">
                     </div>
