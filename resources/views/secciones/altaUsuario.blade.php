@@ -340,7 +340,7 @@
                                               </select>
                                      </div>
                                  <div class="col-sm-4">
-                                        <select class="custom-select" id="select-localidad">
+                                        <select class="custom-select" id="select-localidad" name="select-localidad">
                                                 @foreach ($localidades as $localidad)
                                                     @if ($localidad['id']==1885)
                                                     <option selected value={{$localidad['id']}}>{{$localidad['nombre']}}</option>

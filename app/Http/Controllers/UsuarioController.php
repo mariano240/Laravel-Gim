@@ -6,6 +6,7 @@ use App\User;
 use App\Pais;
 use App\Provincia;
 use App\Localidad;
+use App\Direccion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -52,6 +53,12 @@ class UsuarioController extends Controller
      */
     public function store(altaUsuarioRequest $request)
     {       
+        //falta contemplar los campos vacios
+        $direccion=new Direccion;
+        $direccion->localidad_id=$request['select-localidad'];
+        $direccion->calle=$request['calle'];
+        $direccion->altura=$request['altura'];
+        $direccion->save();
         
         
         $usuario=new User;
@@ -64,7 +71,7 @@ class UsuarioController extends Controller
         $usuario->nombre_usuario = $request['dni'];
         $usuario->telefono = $request['telefono'];
         $usuario->estado = 'activo';
-        $usuario->direccion_id = 1;
+        $usuario->direccion_id = $direccion->id;
         $usuario->fecha_alta = date('y/m/d');
         $usuario->created_at = date('y/m/d h:i:s');
         $usuario->save();

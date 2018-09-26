@@ -30,9 +30,9 @@ class altaUsuarioRequest extends FormRequest
             'telefono' => 'string|max:255',
             'dni' => 'required|numeric|unique:users',
             'calle' => 'required|string|max:65',
-            'altura' => 'numeric|max:6',
-            'departamento' => 'string|max:6',
-            'piso' => 'string|max:6'
+            'altura' => 'numeric|max:100000',
+            'departamento' => 'nullable|string|max:6',
+            'piso' => 'nullable|string|max:6'
         ];
     }
 }
