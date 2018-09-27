@@ -17,10 +17,11 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-
+// se utilizan al momento de hacer selects dinámico
 Route::get('provincias/{id}','UsuarioController@cargaProvincias');
 Route::get('localidades/{id}','UsuarioController@cargaLocalidades');
 
+/* cuando se la pensaba como api se genero esto
 Route::apiResource('direccion','DireccionController');
 Route::apiResource('ejercicio','EjercicioController');
 Route::apiResource('entrenamiento','EntrenamientoController');
@@ -38,3 +39,4 @@ Route::apiResource('regionCorporal','RegionCorporalController');
 Route::apiResource('rutina','RutinaController');
 Route::apiResource('usuario','UsuarioController');
 
+*/

@@ -18,7 +18,8 @@
                   <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
                   <div class="container">
                     <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto">
-                      <form class="form" method="" action="">
+                    <form class="form" method="POST" action="{{route('login')}}">
+                      {{ csrf_field() }}
                         <div class="card card-login">
                           <div class="card-header card-header-rose text-center">
                             <h4 class="card-title">Login</h4>
@@ -43,7 +44,8 @@
                                     <i class="material-icons">ballot</i>
                                   </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="DNI...">
+                                <input type="text" class="form-control" placeholder="DNI..." name="nombre_usuario">
+                                {!! $errors->first('nombre_usuario','<span class="help-block">:message</span>')!!}
                               </div>
                             </span>
                             <span class="bmd-form-group">
@@ -53,12 +55,12 @@
                                     <i class="material-icons">lock_outline</i>
                                   </span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Password...">
+                                <input type="password" class="form-control" placeholder="Password..." name="password">
                               </div>
                             </span>
                           </div>
                           <div class="card-footer justify-content-center">
-                            <a href="/" class="btn btn-rose btn-link btn-lg">INGRESAR</a>
+                            <button class="btn btn-rose btn-link btn-lg">INGRESAR</button>
                           </div>
                         </div>
                       </form>

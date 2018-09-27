@@ -30,10 +30,8 @@ $("#select-provincia").on("change",function(e){
   var provincia_id=$(this).val();
   var html_select;
   $.get('/api/localidades/'+provincia_id,function(localidades){
-    console.log(localidades);
       for (let index = 0; index < localidades.length; index++) {
         html_select +='<option value="'+localidades[index].id+'">'+localidades[index].nombre+'</option>';
-        
       }
       $("#select-localidad").html(html_select);
   })

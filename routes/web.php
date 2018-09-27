@@ -21,6 +21,15 @@ Route::get('/login', function () {
     return view('panelInicial.login');
 });
 
+//deberia gestionar las barras de inicio dependiendo del usuario logeado
+Route::get('/barrainicio', 'barraInicioController@index')->name('barraInicial');
+
+
+
+//login 
+Route::post('login', 'Auth\LoginController@Login')->name('login');
+
+
 Route::get('/altaCliente','UsuarioController@precargarModal');
 
 
@@ -28,7 +37,7 @@ Route::post('/registrar', 'UsuarioController@store')->name('resgistrar');
 
 Route::get('/home', 'HomeController@index');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 

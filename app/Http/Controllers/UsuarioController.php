@@ -32,6 +32,7 @@ class UsuarioController extends Controller
         $localidades=Localidad::where('provincia_id',22)->get();
 
         return view('secciones.altaUsuario',compact('paises', 'provincias', 'localidades'));
+       
     }
 
     public function cargaProvincias($id_pais)
