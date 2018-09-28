@@ -244,8 +244,9 @@
 
                         </div>
                         <div class="modal-footer">
-                            <a href="#pablo" class="btn " data-dismiss="modal">Cancelar</a>
-                            <a href="#pablo" class="btn btn-primary ">Aceptar</a>
+                                <button  class="btn" data-dismiss="modal">Cancelar</button>
+                                <br>
+                                <button  class="btn btn-primary" id="altaMembresia">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -336,7 +337,7 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Descuento..." class="form-control" />
+                                            <input type="number" placeholder="Descuento %..." class="form-control" />
                                         </div>
                                     </div>
                                 </div>
@@ -360,8 +361,9 @@
                         </div>
 
                         <div class="modal-footer">
-                            <a href="#pablo" class="btn " data-dismiss="modal">Cancelar</a>
-                            <a href="#pablo" class="btn btn-primary ">Aceptar</a>
+                            <button  class="btn " data-dismiss="modal">Cancelar</button>
+                            <br>
+                            <button  class="btn btn-primary" id="altaPromocion">Aceptar</button>
                         </div>
                     </form>
                 </div>
