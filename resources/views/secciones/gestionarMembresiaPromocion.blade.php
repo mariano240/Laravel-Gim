@@ -83,7 +83,7 @@
                         <tr>
                             <td colspan="4"></td>
                             <td colspan="2" class="text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCrearTipoMembresia">
                                     <i class="material-icons">add</i>
                                 </button>
                             </td>
@@ -182,7 +182,7 @@
                         <tr>
                             <td colspan="4"></td>
                             <td colspan="2" class="text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#crearPromocion">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearPromocion">
                                     <i class="material-icons">add</i>
                                 </button>
                             </td>
@@ -198,7 +198,7 @@
 <!-- seccion modales -->
 
 <!-- modal membresia -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+<div class="modal fade" id="ModalCrearTipoMembresia" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-signup" role="document">
         <div class="modal-content">
             <div class="card card-signup card-plain">
@@ -211,15 +211,15 @@
                         </div>
                         <h4 class="card-title">Crear Nuevo Tipo de Membresia</h4>
                     </div>
-                    <form class="form" method="" action="">
-
+                    <form id="formAltaTipoMembresia" >
+                        {!!csrf_field()!!}
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nombre de la Membresia...">
+                                    <input type="text" class="form-control" placeholder="Nombre de la Membresia..." name="nombre">
                                 </div>
                             </div>
 
@@ -228,7 +228,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">comment</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Descripción...">
+                                    <input type="text" class="form-control" placeholder="Descripción..." name="descripcion">
                                 </div>
                             </div>
 
@@ -237,7 +237,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">attach_money</i></div>
                                     </div>
-                                    <input type="number" placeholder="Costo..." class="form-control" />
+                                    <input type="number" placeholder="Costo..." class="form-control" name="costo"/>
                                 </div>
                             </div>
 
@@ -246,7 +246,7 @@
                         <div class="modal-footer">
                                 <button  class="btn" data-dismiss="modal">Cancelar</button>
                                 <br>
-                                <button  class="btn btn-primary" id="altaMembresia">Aceptar</button>
+                                <button  class="btn btn-primary" id="postAltaTipoMembresia">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -258,7 +258,7 @@
 
 <!-- modal Promoción -->
 
-<div class="modal fade" id="crearPromocion" tabindex="-1" role="dialog">
+<div class="modal fade" id="modalCrearPromocion" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-signup" role="document">
         <div class="modal-content">
             <div class="card card-signup card-plain">
@@ -271,8 +271,8 @@
                         </div>
                         <h4 class="card-title">Crear Nueva Promoción</h4>
                     </div>
-                    <form class="form" method="" action="">
-
+                    <form id="formAltaTipoPromocion" >
+                        {!!csrf_field()!!}
                         <div class="card-body">
 
                             <div class="form-group">
@@ -280,7 +280,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion...">
+                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..." name="nombre">
                                 </div>
                             </div>
 
@@ -289,7 +289,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">comment</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Descripción...">
+                                    <input type="text" class="form-control" placeholder="Descripción..." name="descripcion">
                                 </div>
                             </div>
 
@@ -306,7 +306,7 @@
 
                                             </div>
 
-                                            <input type="date" class="form-control" id="fechaInicio">
+                                            <input type="date" class="form-control" name="fecha_inicial">
                                         </div>
                                     </div>
 
@@ -320,7 +320,7 @@
                                                 <div class="input-group-text"><i class="material-icons">date_range</i>Fecha
                                                     Final:</div>
                                             </div>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" name="fecha_fin">
                                         </div>
                                     </div>
                                 </div>
@@ -337,7 +337,7 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Descuento %..." class="form-control" />
+                                            <input type="number" placeholder="Descuento %..." class="form-control" name="descuento"/>
                                         </div>
                                     </div>
                                 </div>
@@ -350,12 +350,25 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Tiempo Extendido..." class="form-control" />
+                                            <input type="number" placeholder="Tiempo Extendido..." class="form-control" name="tiempo_extendido"/>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="material-icons">label
+                                                    </i></div>
+                                            </div>
+                                            <input type="number" placeholder="Cantidad mínima de meses..." class="form-control" name="cant_meses"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            
                             </div>
 
+                            
 
 
                         </div>
@@ -363,7 +376,7 @@
                         <div class="modal-footer">
                             <button  class="btn " data-dismiss="modal">Cancelar</button>
                             <br>
-                            <button  class="btn btn-primary" id="altaPromocion">Aceptar</button>
+                            <button  class="btn btn-primary" id="postAltaTipoPromocion" >Aceptar</button>
                         </div>
                     </form>
                 </div>

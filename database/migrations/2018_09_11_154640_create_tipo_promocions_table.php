@@ -17,7 +17,7 @@ class CreateTipoPromocionsTable extends Migration
             $table->increments('id');
             $table->string('nombre',100);
             $table->string('estado',100);
-            $table->string('descripccion',255)->nullable();
+            $table->string('descripcion',255)->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->integer('descuento')->nullable();

@@ -42,3 +42,6 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//gestiones de tipo de membresia y promocion
+Route::post('/crearTipoMembresia', 'membresiaPromocionController@crearTipoMembresia')->name('crearTipoMembresia');
+Route::post('/crearTipoPromocion', 'membresiaPromocionController@crearTipoPromocion')->name('crearTipoPromocion');

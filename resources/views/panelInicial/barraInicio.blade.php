@@ -428,7 +428,7 @@
 
              $('#membresiaPromocion').on("click", function (e) {
                 $('#contenido').load("gestionarMembresiaPromocion");
-                //$.getScript("js/altaUsuario.js");
+                $.getScript("js/altaMembresiaPromocion.js");
             });
 
         });
