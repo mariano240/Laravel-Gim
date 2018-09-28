@@ -13,6 +13,19 @@ $("#postAltaTipoPromocion").on("click",function(e){
           
           $("#modalCrearPromocion").modal("hide");
           $("#formAltaTipoPromocion").trigger("reset");
+          $.notify({
+            icon: "add_alert",
+            message: "Se creó correctamente el tipo de promoción"
+      
+        },{
+            type: 'primary',
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+          
         },
       } );
 });
@@ -28,9 +41,24 @@ $("#postAltaTipoMembresia").on("click",function(e){
         data: $('#formAltaTipoMembresia').serialize(),
         success: function( response ) {
           
-      
+          
           $("#ModalCrearTipoMembresia").modal("hide");
           $("#formAltaTipoMembresia").trigger("reset");
+          
+          $.notify({
+            icon: "add_alert",
+            message: "Se creó correctamente el tipo de membresia"
+      
+        },{
+            type: 'primary',
+            timer: 4000,
+            placement: {
+                from: 'top',
+                align: 'right'
+            }
+        });
+
+
         },
       } );
 });
