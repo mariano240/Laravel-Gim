@@ -106,6 +106,13 @@
                         </div>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" id="membresiaPromocion">
+                            <i class="material-icons">card_membership
+                            </i>
+                            <p> Membresia-Promoción </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
                             <i class="material-icons">apps</i>
                             <p> Components
@@ -418,6 +425,12 @@
                 $('#contenido').load("altaCliente");
                 $.getScript("js/altaUsuario.js");
             });
+
+             $('#membresiaPromocion').on("click", function (e) {
+                $('#contenido').load("gestionarMembresiaPromocion");
+                //$.getScript("js/altaUsuario.js");
+            });
+
         });
 
 

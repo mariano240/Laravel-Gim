@@ -32,6 +32,7 @@ Route::post('login', 'Auth\LoginController@Login')->name('login');
 
 Route::get('/altaCliente','UsuarioController@precargarModal');
 
+Route::get('/gestionarMembresiaPromocion','membresiaPromocionController@precargarModal');
 
 Route::post('/registrar', 'UsuarioController@store')->name('resgistrar');
 
