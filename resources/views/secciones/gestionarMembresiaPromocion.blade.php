@@ -46,7 +46,7 @@
                             <tr>
                                     <td colspan="4"></td>
                                     <td colspan="2" class="text-right">
-                                        <button type="button" class="btn btn-primary" rel="tooltip" data-toggle="modal" data-target="#ModalCrearTipoMembresia" title="Crear Membresia">
+                                        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#ModalCrearTipoMembresia" >
                                             <i class="material-icons">add</i>
                                         </button>
                                     </td>
@@ -107,7 +107,7 @@
                         <tr>
                                 <td colspan="4"></td>
                                 <td colspan="2" class="text-right">
-                                    <button type="button" class="btn btn-primary" rel="tooltip" data-toggle="modal" data-target="#modalCrearPromocion" title="Crear Promoción">
+                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modalCrearPromocion" >
                                         <i class="material-icons">add</i>
                                     </button>
                                 </td>
@@ -125,7 +125,7 @@
 
 <!-- modal membresia -->
 <div class="modal fade" id="ModalCrearTipoMembresia" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-signup" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="card card-signup card-plain">
 
@@ -182,10 +182,54 @@
 </div>
 </div>
 
+<!-- modal confirmar membresia -->
+
+<div class="modal fade" id="ModalConfirmarMembresia" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="card card-signup card-plain">
+
+                <div class="modal-body">
+
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">delete_forever</i>
+                        </div>
+                        <h4 class="card-title">ATENCIÓN</h4>
+                    </div>
+                    
+                        
+                        <div class="card-body">
+                            
+
+                           <div id="textoEliminarMembresia" data-nombreMembresia="" data-idMembresia="">
+
+                           </div>
+                            
+
+
+                        </div>
+                        <div class="modal-footer">
+                                <button  class="btn" data-dismiss="modal">Cancelar</button>
+                                <br>
+                                <button  class="btn btn-danger" id="eliminarTipoMembresia">Aceptar</button>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
 <!-- modal Promoción -->
 
 <div class="modal fade" id="modalCrearPromocion" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-signup" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="card card-signup card-plain">
 
@@ -287,7 +331,7 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Cantidad mínima de meses..." class="form-control" name="cant_meses"/>
+                                            <input type="number" placeholder="Cant mínima de meses..." class="form-control" name="cant_meses"/>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +356,45 @@
 </div>
 </div>
 
+<!-- modal confirmar promocion -->
 
+<div class="modal fade" id="ModalConfirmarPromocion" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="card card-signup card-plain">
+
+                <div class="modal-body">
+
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">delete_forever</i>
+                        </div>
+                        <h4 class="card-title">ATENCIÓN</h4>
+                    </div>
+                    
+                        
+                        <div class="card-body">
+                            
+
+                           <div id="textoEliminarPromocion" data-nombrePromocion="" data-idPromocion="">
+
+                           </div>
+                            
+
+
+                        </div>
+                        <div class="modal-footer">
+                                <button  class="btn" data-dismiss="modal">Cancelar</button>
+                                <br>
+                                <button  class="btn btn-danger" id="eliminarTipoPromocion">Aceptar</button>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
 
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
