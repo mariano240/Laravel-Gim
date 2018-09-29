@@ -172,7 +172,7 @@
                         <div class="modal-footer">
                                 <button  class="btn" data-dismiss="modal">Cancelar</button>
                                 <br>
-                                <button  class="btn btn-primary" id="postAltaTipoMembresia">Aceptar</button>
+                                <button  class="btn btn-primary" data-dismiss="modal" id="postAltaTipoMembresia">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -212,7 +212,7 @@
                         <div class="modal-footer">
                                 <button  class="btn" data-dismiss="modal">Cancelar</button>
                                 <br>
-                                <button  class="btn btn-danger" id="eliminarTipoMembresia">Aceptar</button>
+                                <button  class="btn btn-danger" data-dismiss="modal" id="eliminarTipoMembresia">Aceptar</button>
                         </div>
                     
                 </div>
@@ -346,7 +346,7 @@
                         <div class="modal-footer">
                             <button  class="btn " data-dismiss="modal">Cancelar</button>
                             <br>
-                            <button  class="btn btn-primary" id="postAltaTipoPromocion" >Aceptar</button>
+                            <button  class="btn btn-primary" data-dismiss="modal" id="postAltaTipoPromocion" >Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -386,7 +386,7 @@
                         <div class="modal-footer">
                                 <button  class="btn" data-dismiss="modal">Cancelar</button>
                                 <br>
-                                <button  class="btn btn-danger" id="eliminarTipoPromocion">Aceptar</button>
+                                <button  class="btn btn-danger" data-dismiss="modal" id="eliminarTipoPromocion">Aceptar</button>
                         </div>
                     
                 </div>
