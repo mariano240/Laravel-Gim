@@ -43,4 +43,15 @@ class membresiaPromocionController extends Controller
         $tipoMembresia->save();
         return ['respuesta'=> 'correcto'];
     }
+
+    public function eliminarTipoMembresia(Request $id){
+        TipoMembresia::destroy($id['idTipoMembresia']);
+        return ["resultado"=>"exito"];
+        //BD::table('tipo_membresia')->where('id',$id);
+    }
+
+    public function eliminarTipoPromocion(Request $id){
+        TipoPromocion::destroy($id['idTipoPromocion']);
+        return ["resultado"=>"exito"];
+    }
 }

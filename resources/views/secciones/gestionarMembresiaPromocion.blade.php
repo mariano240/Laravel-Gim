@@ -23,7 +23,7 @@
                     </thead>
                     <tbody id="tablaTipoMembresia">
                             @foreach ($membresias as $item)
-                            <tr value="{{$item['id']}}">
+                            <tr data-idMembresia="{{$item['id']}}">
 
                                     <td class="text-left">{{$item['nombre']}}</td>
                                     <td class="text-center">{{$item['costo']}}</td>
@@ -94,11 +94,11 @@
                                     title="">
                                     <i class="material-icons">card_membership</i>
                                 </button>
-                                <button type="button"  rel="tooltip"  class="btn btn-warning" data-original-title="" 
+                                <button type="button"  rel="tooltip"  data-tipo="editar" class="btn btn-warning" data-original-title="" 
                                     title="">
                                     <i class="material-icons">edit</i>
                                 </button>
-                                <button type="button"  rel="tooltip"  class="btn btn-danger" data-original-title="" title="">
+                                <button type="button"  rel="tooltip"  data-tipo="eliminar" class="btn btn-danger" data-original-title="" title="">
                                     <i class="material-icons">close</i>
                                 </button>
                             </td>
@@ -138,7 +138,7 @@
                         <h4 class="card-title">Crear Nuevo Tipo de Membresia</h4>
                     </div>
                     <form id="formAltaTipoMembresia" >
-                        {!!csrf_field()!!}
+                        
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="input-group">
@@ -198,7 +198,7 @@
                         <h4 class="card-title">Crear Nueva Promoción</h4>
                     </div>
                     <form id="formAltaTipoPromocion" >
-                        {!!csrf_field()!!}
+                        
                         <div class="card-body">
 
                             <div class="form-group">

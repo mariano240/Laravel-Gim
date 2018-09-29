@@ -3,7 +3,7 @@
     <div class="wizard-container">
         <div class="card card-wizard active" data-color="rose" id="wizardProfile">
             <form id="formAltaUsuario" method="" action="">
-                    {{csrf_field()}}
+                    
                 <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                 <div class="card-header text-center">
                     <h3 class="card-title">
