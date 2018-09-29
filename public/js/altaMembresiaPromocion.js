@@ -62,3 +62,8 @@ $("#postAltaTipoMembresia").on("click",function(e){
         },
       } );
 });
+
+$("#tablaTipoMembresia").on("click",'[data-tipo="eliminar"]',function(e){
+    console.log("esta intentando eliminar, chamaco");
+
+});

@@ -13,7 +13,9 @@ class membresiaPromocionController extends Controller
 {
     
     public function precargarModal(){
-        return view("secciones.gestionarMembresiaPromocion");
+        $membresias=TipoMembresia::all();
+        $promociones=TipoPromocion::all();
+        return view("secciones.gestionarMembresiaPromocion",compact('membresias','promociones'));
     }
 
     public function crearTipoPromocion(tipoMembresiaRequest $promocion){

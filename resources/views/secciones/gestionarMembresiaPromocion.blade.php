@@ -21,73 +21,36 @@
                             <th class="text-right">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="tablaTipoMembresia">
+                            @foreach ($membresias as $item)
+                            <tr value="{{$item['id']}}">
 
-                            <td class="text-left">Estandar</td>
-                            <td class="text-center">$400</td>
-                            <td class="text-center">Solo Aparatos</td>
-                            <td class="text-center">No</td>
-                            <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
-                                    <i class="material-icons">card_giftcard</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-warning" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td class="text-left">Premiun</td>
-                            <td class="text-center">$1000</td>
-                            <td class="text-center">Aparatos+ 1 Actividad</td>
-                            <td class="text-center">Si</td>
-                            <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
-                                    <i class="material-icons">card_giftcard</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-warning" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td class="text-left">Premiun Gold</td>
-                            <td class="text-center">$1500</td>
-                            <td class="text-center">Aparatos+ 3 Actividad</td>
-                            <td class="text-center">Si</td>
-                            <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
-                                    <i class="material-icons">card_giftcard</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-warning" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger " data-original-title=""
-                                    title="">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td colspan="2" class="text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCrearTipoMembresia">
-                                    <i class="material-icons">add</i>
-                                </button>
-                            </td>
-                        </tr>
+                                    <td class="text-left">{{$item['nombre']}}</td>
+                                    <td class="text-center">{{$item['costo']}}</td>
+                                    <td class="text-center">{{$item['descripcion']}}</td>
+                                    <td class="text-center">No</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
+                                            <i class="material-icons">card_giftcard</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-warning" data-tipo="editar" data-original-title=""
+                                            title="">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-danger" data-tipo="eliminar" data-original-title="" title="">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                    <td colspan="4"></td>
+                                    <td colspan="2" class="text-right">
+                                        <button type="button" class="btn btn-primary" rel="tooltip" data-toggle="modal" data-target="#ModalCrearTipoMembresia" title="Crear Membresia">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                    </td>
+                                </tr>
                     </tbody>
                 </table>
             </div>
@@ -118,75 +81,38 @@
                             <th class="text-right">Acciones</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="text-left">Nuevo Ingreso</td>
-                            <td class="text-center">01/01/2019--01/02/2019</td>
-                            <td class="text-center">%30 Decuento</td>
-                            <td class="text-center">Activo</td>
+                    <tbody id="tablaTipoPromocion" data-info="manola">
+                        @foreach ($promociones as $item)
+                        
+                        <tr data-idPromocion="{{$item['id']}}">
+                            <td class="text-left">{{$item['nombre']}}</td>
+                            <td class="text-center">{{$item['fecha_inicio']}}--{{$item['fecha_fin']}}</td>
+                            <td class="text-center">{{$item['descripcion']}}</td>
+                            <td class="text-center">{{$item['estado']}}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-success" data-original-title=""
+                                <button type="button"  rel="tooltip"  class="btn btn-success" data-original-title=""
                                     title="">
                                     <i class="material-icons">card_membership</i>
                                 </button>
-                                <button type="button" rel="tooltip" class="btn btn-warning" data-original-title=""
+                                <button type="button"  rel="tooltip"  class="btn btn-warning" data-original-title="" 
                                     title="">
                                     <i class="material-icons">edit</i>
                                 </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
+                                <button type="button"  rel="tooltip"  class="btn btn-danger" data-original-title="" title="">
                                     <i class="material-icons">close</i>
                                 </button>
                             </td>
                         </tr>
+                        @endforeach
                         <tr>
-
-                            <td class="text-left">Verano Full</td>
-                            <td class="text-center">01/01/2019--01/02/2019</td>
-                            <td class="text-center">%40 Decuento</td>
-                            <td class="text-center">Activo</td>
-                            <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-success" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">card_membership</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-warning" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger" data-original-title="" title="">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td class="text-left">2x1</td>
-                            <td class="text-center">01/01/2019--01/02/2019</td>
-                            <td class="text-center">%50 Decuento</td>
-                            <td class="text-center">No Activo</td>
-                            <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" class="btn btn-success" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">card_membership</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-warning" data-original-title=""
-                                    title="">
-                                    <i class="material-icons">edit</i>
-                                </button>
-                                <button type="button" rel="tooltip" class="btn btn-danger " data-original-title=""
-                                    title="">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4"></td>
-                            <td colspan="2" class="text-right">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearPromocion">
-                                    <i class="material-icons">add</i>
-                                </button>
-                            </td>
-                        </tr>
+                                <td colspan="4"></td>
+                                <td colspan="2" class="text-right">
+                                    <button type="button" class="btn btn-primary" rel="tooltip" data-toggle="modal" data-target="#modalCrearPromocion" title="Crear Promoción">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </td>
+                            </tr>
+                        
                     </tbody>
                 </table>
             </div>
@@ -306,7 +232,7 @@
 
                                             </div>
 
-                                            <input type="date" class="form-control" name="fecha_inicial">
+                                            <input type="text" class="form-control datetimepicker" name="fecha_inicial">
                                         </div>
                                     </div>
 
@@ -385,3 +311,9 @@
     </div>
 </div>
 </div>
+
+
+
+
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="assets/js/material-dashboard.min.js?v=2.0.2" type="text/javascript"></script>
