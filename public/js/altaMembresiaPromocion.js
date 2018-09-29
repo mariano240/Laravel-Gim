@@ -16,7 +16,9 @@ $("#postAltaTipoPromocion").on("click",function(e){
 
           mensaje("primary","Se creó correctamente el tipo de promoción");
           
-          
+          $('#contenido').load("gestionarMembresiaPromocion");
+            $.getScript("js/altaMembresiaPromocion.js");
+           $('body').removeClass("modal-open");
         },
       } );
 });
@@ -37,7 +39,10 @@ $("#postAltaTipoMembresia").on("click",function(e){
           $("#formAltaTipoMembresia").trigger("reset");
           
           mensaje("primary","Se creó correctamente el tipo de membresia");
-
+          
+          $('#contenido').load("gestionarMembresiaPromocion");
+          $.getScript("js/altaMembresiaPromocion.js");
+          $('body').removeClass("modal-open");
 
         },
       } );
@@ -50,6 +55,7 @@ $("#tablaTipoMembresia").on("click",'[data-tipo="eliminar"]',function(e){
     //datos.append('idTipoMembresia',idFila);
     var datos= { idTipoMembresia: idFila,
                  };
+                 
     $.ajax( {
         type: "POST",
         url: "http://127.0.0.1:8000/eliminarTipoMembresia",

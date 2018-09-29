@@ -232,7 +232,7 @@
 
                                             </div>
 
-                                            <input type="text" class="form-control datetimepicker" name="fecha_inicial">
+                                            <input type="date" class="form-control" name="fecha_inicial">
                                         </div>
                                     </div>
 
