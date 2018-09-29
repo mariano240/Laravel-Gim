@@ -77,7 +77,7 @@
                             <th class="text-left">Nombre</th>
                             <th class="text-center">Vigencia</th>
                             <th class="text-center">Beneficio</th>
-                            <th class="text-center">Estado</th>
+                            <th class="text-center">Mínimo de Meses</th>
                             <th class="text-right">Acciones</th>
                         </tr>
                     </thead>
@@ -88,7 +88,7 @@
                             <td class="text-left">{{$item['nombre']}}</td>
                             <td class="text-center">{{$item['fecha_inicio']}}--{{$item['fecha_fin']}}</td>
                             <td class="text-center">{{$item['descripcion']}}</td>
-                            <td class="text-center">{{$item['estado']}}</td>
+                            <td class="text-center">{{$item['cant_meses']}}</td>
                             <td class="td-actions text-right">
                                 <button type="button"  rel="tooltip"  class="btn btn-success" data-original-title=""
                                     title="">
@@ -145,7 +145,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nombre de la Membresia..." name="nombre">
+                                    <input type="text" class="form-control" required placeholder="Nombre de la Membresia..." name="nombre">
                                 </div>
                             </div>
 
@@ -154,7 +154,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">comment</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Descripción..." name="descripcion">
+                                    <input type="text" class="form-control" required placeholder="Descripción..." name="descripcion">
                                 </div>
                             </div>
 
@@ -163,7 +163,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">attach_money</i></div>
                                     </div>
-                                    <input type="number" placeholder="Costo..." class="form-control" name="costo"/>
+                                    <input type="number" required placeholder="Costo..." class="form-control" min="0" max="100000" name="costo"/>
                                 </div>
                             </div>
 
@@ -250,7 +250,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..." name="nombre">
+                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..." required name="nombre">
                                 </div>
                             </div>
 
@@ -259,7 +259,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">comment</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Descripción..." name="descripcion">
+                                    <input type="text" class="form-control" placeholder="Descripción..." required name="descripcion">
                                 </div>
                             </div>
 
@@ -307,7 +307,7 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Descuento %..." class="form-control" name="descuento"/>
+                                            <input type="number" placeholder="Descuento %..." min="0" max="100" class="form-control" name="descuento"/>
                                         </div>
                                     </div>
                                 </div>
@@ -320,7 +320,7 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Tiempo Extendido..." class="form-control" name="tiempo_extendido"/>
+                                            <input type="number" placeholder="Tiempo Extendido..." min="0" max=12 class="form-control" name="tiempo_extendido"/>
                                         </div>
                                     </div>
                                 </div>
@@ -331,7 +331,7 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Cant mínima de meses..." class="form-control" name="cant_meses"/>
+                                            <input type="number" placeholder="Cant mínima de meses..." required min="1" max="12" class="form-control" name="cant_meses"/>
                                         </div>
                                     </div>
                                 </div>
