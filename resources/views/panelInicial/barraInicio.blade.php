@@ -317,7 +317,7 @@
                     <div class="container-fluid">
                         <!-- comienzo del contenido -->
 
-                        <div id="contenido">
+                        <div id="contenido" >
 
                         </div>
                         @yield('fila1')
