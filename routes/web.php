@@ -50,3 +50,5 @@ Route::post('/eliminarTipoPromocion', 'membresiaPromocionController@eliminarTipo
 Route::post('/editarTipoMembresia', 'membresiaPromocionController@editarTipoMembresia')->name('editarTipoMembresia');
 Route::post('/editarTipoPromocion', 'membresiaPromocionController@editarTipoPromocion')->name('editarTipoPromocion');
 Route::get('/buscarTipoPromocionId', 'membresiaPromocionController@buscarTipoPromocionId')->name('buscarTipoPromocionId');
+Route::get('/buscarTipoPromocionAll', 'membresiaPromocionController@buscarTipoPromocionAll')->name('buscarTipoPromocionAll');
+Route::post('/asociarTipoMembresiaPromocion', 'membresiaPromocionController@asociarTipoMembresiaPromocion')->name('asociarTipoMembresiaPromocion');

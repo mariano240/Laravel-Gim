@@ -195,24 +195,9 @@ function eliminarTipoPromocion(id){
 
 //editar tipo de promocion
 
-//recueperar de la tabla para editar
+//recueperar de la tabla para editar y recupera datos de la base
 $("#tablaTipoPromocion").on("click",'[data-tipo="editar"]',function(e){
     var idFila=$(this).parents().parents().attr("data-idPromocion");
-    
-    /* se debe recuperar de la base de datos
-    
-    var nombre=$(this).parents().parents().children().eq(0).text();
-    var costo=$(this).parents().parents().children().eq(1).text();
-    var descripcion=$(this).parents().parents().children().eq(2).text();
-   
-
-    console.log(nombre,costo,descripcion);
-    $('#ModalEditarTipoPromocion input[name="idTipoPromocion"]').val(idFila);
-    $('#ModalEditarTipoPromocion input[name="nombre"]').val(nombre);
-    $('#ModalEditarTipoPromocion input[name="costo"]').val(costo);
-    $('#ModalEditarTipoPromocion input[name="descripcion"]').val(descripcion);
-    $('#ModalEditarTipoPromocion').modal(true);
-    */
    
    $.ajax( {
     type: "GET",
@@ -221,7 +206,7 @@ $("#tablaTipoPromocion").on("click",'[data-tipo="editar"]',function(e){
     data: {idTipoPromocion: idFila
             },
     success: function( response ) {
-        console.log(response);
+        
         $('#ModalEditarTipoPromocion input[name="idTipoPromocion"]').val(response.id);
         $('#ModalEditarTipoPromocion input[name="nombre"]').val(response.nombre);
         $('#ModalEditarTipoPromocion input[name="fecha_inicial"]').val(response.fecha_inicio);
@@ -237,11 +222,9 @@ $("#tablaTipoPromocion").on("click",'[data-tipo="editar"]',function(e){
                  
 });
 
-//confirmacion de editar
+//confirmacion de editar tipo promocion
 $("#postEditarTipoPromocion").on("click",function(e){
     e.preventDefault ();
-    var dataayuda=$('#formEditarTipoPromocion').serialize();
-    console.log(dataayuda);
     $.ajax( {
         type: "POST",
         url: "http://127.0.0.1:8000/editarTipoPromocion",
@@ -260,9 +243,87 @@ $("#postEditarTipoPromocion").on("click",function(e){
 });
 
 
+//seccion asociar membresia a promociones
+
+$("#tablaTipoMembresia").on("click",'[data-tipo="asociar"]',function(e){
+    var idFila=$(this).parents().parents().attr("data-idMembresia");
+    var nombre=$(this).parents().parents().children().eq(0).text();
+    
+    var htmlDescripcion='¿Que promociones aplican a la membresia '+'<strong>'+ '<i>'+nombre+'</i>'+'</strong>'+' ?'
+    var htmlTR;
+    $('#ModalAsociarMembresia-Promocion p').html(htmlDescripcion);
+    $.ajax( {
+        type: "GET",
+        url: "http://127.0.0.1:8000/buscarTipoPromocionAll",
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        
+        success: function( response ) {
+            //el value es un objeto del tipo promocion
+            $.each(response,function(index,value){
+                htmlTR+= '<tr data-idpromocion="'+value.id+'">'+
+                                        '<td >'+
+                                            '<div class="form-check form-check-inline">'+
+                                                '<label class="form-check-label">'+
+                                                  '<input class="form-check-input" type="checkbox" value="" checked="" name="asociado"> '+
+                                                  '<span class="form-check-sign">'+
+                                                    '<span class="check"></span>'+
+                                                  '</span>'+
+                                                '</label>'+
+                                              '</div>'+
+                                        '</td>'+
+                                        '<td class="text-center">'+ value.nombre +'</td>'+
+                                        '<td class="text-center">'+value.fecha_inicio+'-'+value.fecha_fin+'</td>'+
+                                        '<td class="text-center">'+value.descripcion +'</td>'+
+                                        '<td class="text-center">'+ value.cant_meses +'</td>'+
+                                        
+                                    '</tr>'
+            });
+            $('#ModalAsociarMembresia-Promocion input[name="idTipoMembresia"]').val(idFila);
+            $('#ModalAsociarMembresia-Promocion tbody').html(htmlTR);
+
+        },
+      } );
+     
+    $('#ModalAsociarMembresia-Promocion').modal(true);
+     
+                 
+});
 
 
+//confirmar asociacion
+$("#postAsociarMembresiaPromocion").on("click",function(e){
+    e.preventDefault ();
+    var idpromocion=$('#formAsociarMembresia-Promocion input[name="idTipoMembresia"]').val();
+    var resultados=[];
+    $('#formAsociarMembresia-Promocion input[type=checkbox]').each(function(){
+        var id=$(this).parents().parents().parents().parents().attr("data-idPromocion");
+        if(this.checked){
+            var promocion={idPromocion:id, estado:'activa'};
+            resultados.push(promocion);
+            
+        }
+        
+    })
 
+
+    $.ajax( {
+        type: "POST",
+        url: "http://127.0.0.1:8000/asociarTipoMembresiaPromocion",
+        headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+        
+        data: { idpromocion: idpromocion,
+                promociones: resultados
+                },
+        success: function( response ) {
+              
+          
+          mensaje("primary","Se aplicaron las promociones correctamente");
+          
+          $('#contenido').load("gestionarMembresiaPromocion");
+          $.getScript("js/altaMembresiaPromocion.js");
+        },
+      } );
+});
 
 
 //avisos generales

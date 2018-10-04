@@ -30,14 +30,14 @@
                                     <td class="text-center">{{$item['descripcion']}}</td>
                                     <td class="text-center">No</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" class="btn btn-info" data-original-title="" title="">
+                                        <button type="button"  class="btn btn-info" data-tipo="asociar" data-original-title="" title="">
                                             <i class="material-icons">card_giftcard</i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-warning" data-tipo="editar" data-original-title=""
+                                        <button type="button"  class="btn btn-warning" data-tipo="editar" data-original-title=""
                                             title="">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-danger" data-tipo="eliminar" data-original-title="" title="">
+                                        <button type="button"  class="btn btn-danger" data-tipo="eliminar" data-original-title="" title="">
                                             <i class="material-icons">close</i>
                                         </button>
                                     </td>
@@ -588,6 +588,61 @@
                                 <button  class="btn btn-danger" data-dismiss="modal" id="eliminarTipoPromocion">Aceptar</button>
                         </div>
                     
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- seccion modal asiciar membresia a promocion -->
+
+<div class="modal fade" id="ModalAsociarMembresia-Promocion" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="card card-signup card-plain">
+
+                <div class="modal-body">
+
+                    <div class="card-header card-header-primary card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">card_membership</i>
+                            <i class="material-icons">swap_horiz</i>
+                            <i class="material-icons">card_giftcard</i>
+                        </div>
+                        
+                        <h4 class="card-title">Asociar Tipo de Membresia a un Tipo de Promoción</h4>
+                    </div>
+                     <p class="description text-center"></p>
+                    <form id="formAsociarMembresia-Promocion" >
+                        <input type="hidden" name="idTipoMembresia">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Asociar</th>
+                                            <th class="text-center">Nombre</th>
+                                            <th class="text-center">Vigencia</th>
+                                            <th class="text-center">Beneficio</th>
+                                            <th class="text-center">Mínimo de Meses</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                  <tbody>
+                                    
+
+                                  </tbody>
+                                </table>
+                              </div>
+
+                        </div>
+                        <div class="modal-footer">
+                                <button  class="btn" data-dismiss="modal">Cancelar</button>
+                                <br>
+                                <button  class="btn btn-primary" data-dismiss="modal" id="postAsociarMembresiaPromocion">Aceptar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

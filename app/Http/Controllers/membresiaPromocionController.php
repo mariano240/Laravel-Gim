@@ -18,6 +18,11 @@ class membresiaPromocionController extends Controller
         return view("secciones.gestionarMembresiaPromocion",compact('membresias','promociones'));
     }
 
+    public function buscarTipoPromocionAll(){
+        
+        return TipoPromocion::all();
+    }
+
     public function crearTipoPromocion(tipoMembresiaRequest $promocion){
         $tipoPromocion=new TipoPromocion;
         $tipoPromocion->nombre= $promocion['nombre'];
@@ -83,4 +88,10 @@ class membresiaPromocionController extends Controller
     public function buscarTipoPromocionId(Request $id){
         return TipoPromocion::find($id['idTipoPromocion']);
     }
+
+    public function asociarTipoMembresiaPromocion(request $pedido){
+        
+        return ["resultado"=>$pedido['promociones']];
+    }
+
 }
