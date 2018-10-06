@@ -253,28 +253,37 @@ $("#tablaTipoMembresia").on("click",'[data-tipo="asociar"]',function(e){
     var htmlTR;
     $('#ModalAsociarMembresia-Promocion p').html(htmlDescripcion);
     $.ajax( {
-        type: "GET",
-        url: "http://127.0.0.1:8000/buscarTipoPromocionAll",
+        type: "POST",
+        data:{idMembresia:idFila},
+        url: "http://127.0.0.1:8000/buscarTipoPromocionAllMembresia",
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         
         success: function( response ) {
             //el value es un objeto del tipo promocion
+            
             $.each(response,function(index,value){
-                htmlTR+= '<tr data-idpromocion="'+value.id+'">'+
+
+                htmlTR+= '<tr data-idpromocion="'+value.promocion.id+'">'+
                                         '<td >'+
                                             '<div class="form-check form-check-inline">'+
                                                 '<label class="form-check-label">'+
-                                                  '<input class="form-check-input" type="checkbox" value="" checked="" name="asociado"> '+
-                                                  '<span class="form-check-sign">'+
+                                                  '<input class="form-check-input" type="checkbox" value=""';
+                                                   if(value.estado){
+                                                    htmlTR+='checked="" name="asociado"> '
+                                                   }else{
+                                                    htmlTR+=' name="asociado"> '
+                                                   }
+                                                   
+                                             htmlTR+='<span class="form-check-sign">'+
                                                     '<span class="check"></span>'+
                                                   '</span>'+
                                                 '</label>'+
                                               '</div>'+
                                         '</td>'+
-                                        '<td class="text-center">'+ value.nombre +'</td>'+
-                                        '<td class="text-center">'+value.fecha_inicio+'-'+value.fecha_fin+'</td>'+
-                                        '<td class="text-center">'+value.descripcion +'</td>'+
-                                        '<td class="text-center">'+ value.cant_meses +'</td>'+
+                                        '<td class="text-center">'+ value.promocion.nombre +'</td>'+
+                                        '<td class="text-center">'+value.promocion.fecha_inicio+'-'+value.promocion.fecha_fin+'</td>'+
+                                        '<td class="text-center">'+value.promocion.descripcion +'</td>'+
+                                        '<td class="text-center">'+ value.promocion.cant_meses +'</td>'+
                                         
                                     '</tr>'
             });
@@ -283,7 +292,7 @@ $("#tablaTipoMembresia").on("click",'[data-tipo="asociar"]',function(e){
 
         },
       } );
-     
+      
     $('#ModalAsociarMembresia-Promocion').modal(true);
      
                  
@@ -293,7 +302,7 @@ $("#tablaTipoMembresia").on("click",'[data-tipo="asociar"]',function(e){
 //confirmar asociacion
 $("#postAsociarMembresiaPromocion").on("click",function(e){
     e.preventDefault ();
-    var idpromocion=$('#formAsociarMembresia-Promocion input[name="idTipoMembresia"]').val();
+    var idmembresia=$('#formAsociarMembresia-Promocion input[name="idTipoMembresia"]').val();
     var resultados=[];
     $('#formAsociarMembresia-Promocion input[type=checkbox]').each(function(){
         var id=$(this).parents().parents().parents().parents().attr("data-idPromocion");
@@ -302,16 +311,16 @@ $("#postAsociarMembresiaPromocion").on("click",function(e){
             resultados.push(promocion);
             
         }
-        
+       
     })
 
-
+    console.log("estoy mandando", resultados);
     $.ajax( {
         type: "POST",
         url: "http://127.0.0.1:8000/asociarTipoMembresiaPromocion",
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         
-        data: { idpromocion: idpromocion,
+        data: { idmembresia: idmembresia,
                 promociones: resultados
                 },
         success: function( response ) {

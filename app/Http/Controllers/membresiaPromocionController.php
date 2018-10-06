@@ -23,6 +23,31 @@ class membresiaPromocionController extends Controller
         return TipoPromocion::all();
     }
 
+    public function buscarTipoPromocionAllMembresia(request $idMembresia){
+        $tipoMembresia=TipoMembresia::find($idMembresia['idMembresia']);
+        $totalTipoPromocion=TipoPromocion::all();
+        $promocionesDeMembresia=$tipoMembresia->tipoPromocion;
+        $resultado=[];
+        //tengo que retornar todas las promociones y diferenciar las activas
+        //para cada tipo de promocion, me fijo si esta activa para el tipo de membresia
+        $bandera=false;
+        foreach ($totalTipoPromocion as $promocion) {
+            $bandera=false;
+            foreach ($promocionesDeMembresia as $promocionActiva) {
+                if($promocion->id==$promocionActiva->id){
+                    array_push($resultado,['promocion'=>$promocionActiva,'estado'=>true]);
+                    $bandera=true;
+                }
+            }
+            if(!$bandera){
+                array_push($resultado,['promocion'=>$promocion,'estado'=>false]);
+                
+            }
+           
+        }
+        return $resultado;
+    }
+
     public function crearTipoPromocion(tipoMembresiaRequest $promocion){
         $tipoPromocion=new TipoPromocion;
         $tipoPromocion->nombre= $promocion['nombre'];
@@ -89,9 +114,20 @@ class membresiaPromocionController extends Controller
         return TipoPromocion::find($id['idTipoPromocion']);
     }
 
-    public function asociarTipoMembresiaPromocion(request $pedido){
-        
-        return ["resultado"=>$pedido['promociones']];
+    public function asociarTipoMembresiaPromocion(request $asociacion){
+        $tipoMembresia=TipoMembresia::find($asociacion->idmembresia);
+        $promociones=[];
+        if(empty($asociacion['promociones'])){
+            $tipoMembresia->tipoPromocion()->detach();
+        }else{
+            foreach ($asociacion->promociones as $promocion) {
+                array_push($promociones,$promocion['idPromocion']);
+                
+            }
+            $tipoMembresia->tipoPromocion()->sync($promociones);
+        }
+         
+        //return ["resultado"=>$pedido['promociones']];
     }
 
 }
