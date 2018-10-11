@@ -7,6 +7,10 @@ use App\Pais;
 use App\Provincia;
 use App\Localidad;
 use App\Direccion;
+//estos deberian estar en sus controladores
+use App\Membresia;
+use App\Promocion;
+use App\Pago;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -30,8 +34,11 @@ class UsuarioController extends Controller
         //se setea por defecto argentina y sus provincias
         $provincias=Provincia::where('pais_id',1)->get();
         $localidades=Localidad::where('provincia_id',22)->get();
-
-        return view('secciones.altaUsuario',compact('paises', 'provincias', 'localidades'));
+        //precargar tipo de membresia junto con las promociones, esto deberia estar en su controlador
+        $membresiaspromocion=membresiaPromocionController::getMembersiasPromocion();
+        $tipoMembresia=$membresiaspromocion[0];
+        $tipoPromocion=$membresiaspromocion[1];
+        return view('secciones.altaUsuario',compact('paises', 'provincias', 'localidades','tipoMembresia','tipoPromocion'));
        
     }
 
@@ -54,11 +61,17 @@ class UsuarioController extends Controller
      */
     public function store(altaUsuarioRequest $request)
     {       
+        
+        $localidad= Localidad::find($request['idLocalidad']);
         //falta contemplar los campos vacios
         $direccion=new Direccion;
-        $direccion->localidad_id=$request['select-localidad'];
+        //se deberia asociar con localidad
+        //$direccion->localidad_id=$request['idLocalidad'];
         $direccion->calle=$request['calle'];
         $direccion->altura=$request['altura'];
+        $direccion->piso=$request['piso'];
+        $direccion->departamento=$request['departamento'];
+        $direccion->localidad()->associate($localidad);
         $direccion->save();
         
         
@@ -68,14 +81,24 @@ class UsuarioController extends Controller
         $usuario->dni = $request->input('dni');
         $usuario->email = $request['email'];
         $usuario->password = Hash::make($request['dni']);
+        //en posteriores entregas se trabajara los roles, por el momento son clintes
         $usuario->tipo_usuario = 'cliente';
         $usuario->nombre_usuario = $request['dni'];
         $usuario->telefono = $request['telefono'];
         $usuario->estado = 'activo';
-        $usuario->direccion_id = $direccion->id;
+        //deberia ser una asociacion con direccion
+        //$usuario->direccion_id = $direccion->id;
+        $usuario->direccion()->associate($direccion);
         $usuario->fecha_alta = date('y/m/d');
         $usuario->created_at = date('y/m/d h:i:s');
         $usuario->save();
+        
+        
+        //trabajar con los demas controladores para primero crear la membresia , por ahora se crea todo aca
+        MembresiaController::getInstancia()->crearMembresia($request['idMembresia'],$usuario,$request['idPromocion'],$request['cantidadMeses'],$request['formaPago']);
+
+        //crear promocion y forma de pago, para luego asociarlos
+
 
     }
 

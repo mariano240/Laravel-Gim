@@ -130,4 +130,33 @@ class membresiaPromocionController extends Controller
         //return ["resultado"=>$pedido['promociones']];
     }
 
+    static public function getMembersiasPromocion(){
+        $resultado=[];
+        $tipoMembresia=TipoMembresia::all();
+        $tipoPromocion=TipoPromocion::all();
+        array_push($resultado,$tipoMembresia);
+        array_push($resultado,$tipoPromocion);
+        return $resultado;
+        //return TipoMembresia::all();
+        //return ['resultado'=>$tipoMembresia];
+        //defino que las promociones no son acumulaticas, por lo que se van a presentar por separado
+        foreach ($tipoMembresia as $mem) {
+            //si tiene mas de una promocion, separo los resultados
+
+            $mem->tipoPromocion;
+            array_push($resultado,['membresia'=>$mem]);
+            // if( !empty($mem->tipoPromocion) ){
+            //     foreach ($mem->tipoPromocion as $promo) {
+            //         array_push($resultado,['membresia'=>$mem]);
+            //     }
+            // }else{
+            //     //sino tiene promocion la retorno con null para evaluarla en el front
+            //     array_push($resutlado,['membresia'=>$mem, 'promocion'=>null]);
+            // }
+
+        }
+        return  $resultado;
+       
+    }
+
 }

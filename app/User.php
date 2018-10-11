@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
 
     public function membresia(){
-        return $this->hasOne('App\Membresia');
+        return $this->hasMany('App\Membresia');
     }
 
     public function entrenamientos(){

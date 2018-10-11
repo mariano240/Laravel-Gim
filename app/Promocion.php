@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Promocion extends Model
 {
 
-    public function membresias(){
+    public function membresia(){
         return $this->belongsTo('App\Membresia');
     }
 }
