@@ -28,6 +28,28 @@ class UsuarioController extends Controller
         //
     }
 
+    public function tablaClientes(){
+        return datatables()->of(
+            //se reestructurara cuando se tenga servicio que cambie los estados, a diario, entonces aca solo se evaluaria el tipo de estado
+            User::whereHas('membresia',function($query){
+                $query->where([
+                    ['estado','like','activa'],
+                    ['fecha_vencimiento','<=', date('y/m/d')]
+                ]);
+                
+            })
+            ->with(['membresia','membresia.pagos','membresia.promociones'])->get()
+
+            
+            )
+            ->toJson();
+    }
+
+    public function clienteMembresia(){
+
+        return view('secciones.clienteMembresia');
+    }
+
     public function precargarModal()
     {
         $paises=Pais::all();

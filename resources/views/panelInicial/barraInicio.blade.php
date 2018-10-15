@@ -107,6 +107,13 @@
                         </div>
                     </li>
                     <li class="nav-item ">
+                        <a class="nav-link" id="clienteMembresia">
+                            <i class="material-icons">account_circle</i>
+                            <p> Cliente-Membresia
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
                         <a class="nav-link" id="membresiaPromocion">
                             <i class="material-icons">card_membership
                             </i>
@@ -430,6 +437,11 @@
              $('#membresiaPromocion').on("click", function (e) {
                 $('#contenido').load("gestionarMembresiaPromocion");
                 $.getScript("js/altaMembresiaPromocion.js");
+            });
+
+            $('#clienteMembresia').on("click", function (e) {
+                $('#contenido').load("clienteMembresia");
+                $.getScript("js/clienteMembresia.js");
             });
 
         });

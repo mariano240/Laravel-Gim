@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 Route::get('provincias/{id}','UsuarioController@cargaProvincias');
 Route::get('localidades/{id}','UsuarioController@cargaLocalidades');
 
+
 /* cuando se la pensaba como api se genero esto
 Route::apiResource('direccion','DireccionController');
 Route::apiResource('ejercicio','EjercicioController');

@@ -32,7 +32,12 @@ Route::post('login', 'Auth\LoginController@Login')->name('login');
 
 Route::get('/altaCliente','UsuarioController@precargarModal');
 
+//para la gestion de administrador, crea el tipo membresia y promocion
 Route::get('/gestionarMembresiaPromocion','membresiaPromocionController@precargarModal');
+
+//para la gestion de membresia hacia un usuario
+Route::get('/clienteMembresia','UsuarioController@clienteMembresia');
+Route::get('/tablaClientes','UsuarioController@tablaClientes');
 
 Route::post('/registrar', 'UsuarioController@store')->name('resgistrar');
 
