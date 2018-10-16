@@ -11,6 +11,7 @@ return array(
     'App\\Direccion' => $baseDir . '/app/Direccion.php',
     'App\\Ejercicio' => $baseDir . '/app/Ejercicio.php',
     'App\\Entrenamiento' => $baseDir . '/app/Entrenamiento.php',
+    'App\\EstadoMembresia' => $baseDir . '/app/EstadoMembresia.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\HistorialEjercicio' => $baseDir . '/app/HistorialEjercicio.php',
     'App\\HistorialEntrenamiento' => $baseDir . '/app/HistorialEntrenamiento.php',

@@ -17,4 +17,7 @@ class Membresia extends Model
     public function pagos(){
         return $this->hasMany('App\Pago');
     }
+    public function estado_membresia(){
+        return $this->belongsTo('App\EstadoMembresia');
+    }
 }

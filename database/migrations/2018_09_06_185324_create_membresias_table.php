@@ -23,6 +23,8 @@ class CreateMembresiasTable extends Migration
             $table->float('costo',8,2);
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('estado_membresia_id');
+            $table->foreign('estado_membresia_id')->references('id')->on('estado_membresias');
         });
     }
 

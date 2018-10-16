@@ -33,8 +33,7 @@ class UsuarioController extends Controller
             //se reestructurara cuando se tenga servicio que cambie los estados, a diario, entonces aca solo se evaluaria el tipo de estado
             User::whereHas('membresia',function($query){
                 $query->where([
-                    ['estado','like','activa'],
-                    ['fecha_vencimiento','<=', date('y/m/d')]
+                    ['estado_membresia_id','like','1']
                 ]);
                 
             })
@@ -96,7 +95,7 @@ class UsuarioController extends Controller
         $direccion->localidad()->associate($localidad);
         $direccion->save();
         
-        
+
         $usuario=new User;
         $usuario->nombre = $request['nombre'];
         $usuario->apellido = $request['apellido'];

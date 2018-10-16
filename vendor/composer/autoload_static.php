@@ -341,6 +341,7 @@ class ComposerStaticInit73647d8a3f6360149419bfeaf8840da4
         'App\\Direccion' => __DIR__ . '/../..' . '/app/Direccion.php',
         'App\\Ejercicio' => __DIR__ . '/../..' . '/app/Ejercicio.php',
         'App\\Entrenamiento' => __DIR__ . '/../..' . '/app/Entrenamiento.php',
+        'App\\EstadoMembresia' => __DIR__ . '/../..' . '/app/EstadoMembresia.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\HistorialEjercicio' => __DIR__ . '/../..' . '/app/HistorialEjercicio.php',
         'App\\HistorialEntrenamiento' => __DIR__ . '/../..' . '/app/HistorialEntrenamiento.php',

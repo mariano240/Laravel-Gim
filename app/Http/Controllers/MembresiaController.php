@@ -9,7 +9,7 @@ use App\TipoMembresia;
 use App\TipoPromocion;
 use App\Promocion;
 use App\Pago;
-
+use App\EstadoMembresia;
 //este controlador gestiona tanto la membresia como la promocion
 
 class MembresiaController extends Controller
@@ -27,11 +27,11 @@ class MembresiaController extends Controller
 
     public function crearMembresia($idTipoMembresia,$usuario,$idTipoPromocion,$cantidadMeses,$formaPago){
        
-       
+        $membresiaActiva=EstadoMembresia::find(1);
         //creo membresia a partir del tipo de membresia, no se esta considerando el tiempo extendido aun
         $tipoMembresia=TipoMembresia::find($idTipoMembresia);
         $nuevaMembresia= new Membresia();
-        $nuevaMembresia->estado='activa';
+        $nuevaMembresia->estado()->associate($membresiaActiva);
         $nuevaMembresia->costo=$tipoMembresia->costo;
         $nuevaMembresia->nombre=$tipoMembresia->nombre;
         $nuevaMembresia->descripcion=$tipoMembresia->descripcion;
