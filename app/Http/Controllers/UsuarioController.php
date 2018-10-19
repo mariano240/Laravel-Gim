@@ -33,11 +33,14 @@ class UsuarioController extends Controller
             //se reestructurara cuando se tenga servicio que cambie los estados, a diario, entonces aca solo se evaluaria el tipo de estado
             User::whereHas('membresia',function($query){
                 $query->where([
-                    ['estado_membresia_id','like','1']
+                    ['estado_membresia_id','like','2']
+                ]);
+                $query->orWhere([
+                    ['estado_membresia_id','like','3']
                 ]);
                 
             })
-            ->with(['membresia','membresia.pagos','membresia.promociones'])->get()
+            ->with(['membresia','membresia.pagos','membresia.promociones','membresia.estado_membresia'])->get()
 
             
             )
@@ -45,8 +48,17 @@ class UsuarioController extends Controller
     }
 
     public function clienteMembresia(){
+        $paises=Pais::all();
+        //se setea por defecto argentina y sus provincias
+        $provincias=Provincia::where('pais_id',1)->get();
+        $localidades=Localidad::where('provincia_id',22)->get();
+        //precargar tipo de membresia junto con las promociones, esto deberia estar en su controlador
+        $membresiaspromocion=membresiaPromocionController::getMembersiasPromocion();
+        $tipoMembresia=$membresiaspromocion[0];
+        $tipoPromocion=$membresiaspromocion[1];
+        return view('secciones.clienteMembresia',compact('paises', 'provincias', 'localidades','tipoMembresia','tipoPromocion'));
 
-        return view('secciones.clienteMembresia');
+        //return view('secciones.clienteMembresia');
     }
 
     public function precargarModal()

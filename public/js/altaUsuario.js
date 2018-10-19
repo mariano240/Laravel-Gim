@@ -1,16 +1,37 @@
 //envio de formulario
  $("#postAltaCliente").on("click",function(e){
-   e.preventDefault();
+  // e.preventDefault();
+
+  //definir mensajes, por convencion los tipos de validaciones estan en el formulario, asi lo trabaja el paquete
+  $("#formAltaUsuario").validate({
+    
+    messages: {
+      
+      email: {
+        
+        email: "email incorrecto"
+      }
+    }
+  });
+//para validar de a un elemento
+// $('#formAltaUsuario [name="nombre"]').valid();
+// para validar el formulario entero
+//$('#formAltaUsuario').valid();
+//cuando se valida, se retorna el mensaje, solo del elemento validado
+
+//para los form-group tenemos if-focused=linea de color dependiendo del estado del validador, if-filled=linea lila (mas importante), 
+//has-danger , has-success para la letra
+
    
-     $.ajax( {
-         type: "POST",
-         url: "http://127.0.0.1:8000/registrar",
-         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-         data: cargarFormulario(),
-         success: function( response ) {
-           console.log( response );
-         }
-       } );
+    //  $.ajax( {
+    //      type: "POST",
+    //      url: "http://127.0.0.1:8000/registrar",
+    //      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+    //      data: cargarFormulario(),
+    //      success: function( response ) {
+    //        console.log( response );
+    //      }
+    //    } );
  })
 
 //carga de las provincias a partir del pais

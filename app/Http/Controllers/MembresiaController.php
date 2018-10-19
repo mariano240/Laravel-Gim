@@ -10,6 +10,7 @@ use App\TipoPromocion;
 use App\Promocion;
 use App\Pago;
 use App\EstadoMembresia;
+use App\User;
 //este controlador gestiona tanto la membresia como la promocion
 
 class MembresiaController extends Controller
@@ -31,14 +32,14 @@ class MembresiaController extends Controller
         //creo membresia a partir del tipo de membresia, no se esta considerando el tiempo extendido aun
         $tipoMembresia=TipoMembresia::find($idTipoMembresia);
         $nuevaMembresia= new Membresia();
-        $nuevaMembresia->estado()->associate($membresiaActiva);
+        $nuevaMembresia->estado_membresia()->associate($membresiaActiva);
         $nuevaMembresia->costo=$tipoMembresia->costo;
         $nuevaMembresia->nombre=$tipoMembresia->nombre;
         $nuevaMembresia->descripcion=$tipoMembresia->descripcion;
         $fechaActual=date('y-m-j');
         $fechaOperada= strtotime( $fechaActual. '+'.$cantidadMeses.' month');
         $nuevaMembresia->fecha_vencimiento=date('y/m/d', $fechaOperada );
-        $nuevaMembresia->usuario()->associate($usuario);
+        $nuevaMembresia->user()->associate($usuario);
         $nuevaMembresia->save();
         
         //creo promocion a partir del tipo de promocion
@@ -65,6 +66,57 @@ class MembresiaController extends Controller
 
     }
 
+    public function actualizarMembresia(request $data){
+        $usuario=User::find($data['idCliente']);
+        $membresiaActual=Membresia::find($data['idMembresiaActual']);
+        $membresiaArchivada=EstadoMembresia::find(4);
+        $idTipoMembresia=$data['idMembresiaNueva'];
+        $cantidadMeses=$data['cantidadMeses'];
+        $idTipoPromocion=$data['idPromocionNueva'];
+        $formaPago=$data['formaPago'];
+
+        //archivo membresia actual
+        $membresiaActual->estado_membresia()->associate($membresiaArchivada);
+        $membresiaActual->save();
+
+        //comienzo con la creacion de nueva membresia
+        $membresiaActiva=EstadoMembresia::find(1);
+        //creo membresia a partir del tipo de membresia, no se esta considerando el tiempo extendido aun
+        $tipoMembresia=TipoMembresia::find($idTipoMembresia);
+        $nuevaMembresia= new Membresia();
+        $nuevaMembresia->estado_membresia()->associate($membresiaActiva);
+        $nuevaMembresia->costo=$tipoMembresia->costo;
+        $nuevaMembresia->nombre=$tipoMembresia->nombre;
+        $nuevaMembresia->descripcion=$tipoMembresia->descripcion;
+        $fechaActual=date('y-m-j');
+        $fechaOperada= strtotime( $fechaActual. '+'.$cantidadMeses.' month');
+        $nuevaMembresia->fecha_vencimiento=date('y/m/d', $fechaOperada );
+        $nuevaMembresia->user()->associate($usuario);
+        $nuevaMembresia->save();
+        
+        //creo promocion a partir del tipo de promocion
+       $tipoPromocion=TipoPromocion::find($idTipoPromocion);
+       $nuevaPromocion=new Promocion();
+       $nuevaPromocion->nombre=$tipoPromocion->nombre;
+       $nuevaPromocion->descuento=$tipoPromocion->descuento;
+       $nuevaPromocion->tiempo_extendido=$tipoPromocion->tiempo_extendido;
+       $nuevaPromocion->descripcion=$tipoPromocion->descripcion;
+       $nuevaPromocion->fecha_adquisicion=date('y/m/d');
+       $nuevaPromocion->membresia()->associate($nuevaMembresia);
+       $nuevaPromocion->save();
+
+        //creo la forma de pago
+        // 
+        $costo=$tipoMembresia->costo;
+        $descuento=$nuevaPromocion->descuento;
+        $pago =new Pago();
+        $pago->monto= ($costo-(($descuento/100)*$costo))*$cantidadMeses;
+        $pago->forma_pago=$formaPago;
+        $pago->fecha=date('y/m/d');
+        $pago->membresia()->associate($nuevaMembresia);
+        $pago->save();
+
+    }
     /**
      * Store a newly created resource in storage.
      *

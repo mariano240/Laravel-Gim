@@ -77,7 +77,7 @@
                             <p> Dashboard </p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    {{-- <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
                             <i class="material-icons">account_circle</i>
                             <p> Gestionar Cliente
@@ -105,7 +105,7 @@
                                     </a>
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                     <li class="nav-item ">
                         <a class="nav-link" id="clienteMembresia">
                             <i class="material-icons">account_circle</i>
@@ -120,7 +120,7 @@
                             <p> Membresia-Promoción </p>
                         </a>
                     </li>
-                    <li class="nav-item ">
+                    {{-- <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
                             <i class="material-icons">apps</i>
                             <p> Components
@@ -305,7 +305,7 @@
                             <i class="material-icons">date_range</i>
                             <p> Calendar </p>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -441,7 +441,9 @@
 
             $('#clienteMembresia').on("click", function (e) {
                 $('#contenido').load("clienteMembresia");
+                $.getScript("js/altaUsuario.js");
                 $.getScript("js/clienteMembresia.js");
+                
             });
 
         });

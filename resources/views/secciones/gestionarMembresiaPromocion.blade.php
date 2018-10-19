@@ -1,5 +1,5 @@
 <!-- seccion membresia -->
-<div class="col-md-12" >
+<div class="col-md-12">
     <div class="card">
         <div class="card-header card-header-primary card-header-icon">
             <div class="card-icon">
@@ -22,35 +22,37 @@
                         </tr>
                     </thead>
                     <tbody id="tablaTipoMembresia">
-                            @foreach ($membresias as $item)
-                            <tr data-idMembresia="{{$item['id']}}">
+                        @foreach ($membresias as $item)
+                        <tr data-idMembresia="{{$item['id']}}">
 
-                                    <td class="text-left">{{$item['nombre']}}</td>
-                                    <td class="text-center">{{$item['costo']}}</td>
-                                    <td class="text-center">{{$item['descripcion']}}</td>
-                                    <td class="text-center">No</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button"  class="btn btn-info" data-tipo="asociar" data-original-title="" title="">
-                                            <i class="material-icons">card_giftcard</i>
-                                        </button>
-                                        <button type="button"  class="btn btn-warning" data-tipo="editar" data-original-title=""
-                                            title="">
-                                            <i class="material-icons">edit</i>
-                                        </button>
-                                        <button type="button"  class="btn btn-danger" data-tipo="eliminar" data-original-title="" title="">
-                                            <i class="material-icons">close</i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            <tr>
-                                    <td colspan="4"></td>
-                                    <td colspan="2" class="text-right">
-                                        <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#ModalCrearTipoMembresia" >
-                                            <i class="material-icons">add</i>
-                                        </button>
-                                    </td>
-                                </tr>
+                            <td class="text-left">{{$item['nombre']}}</td>
+                            <td class="text-center">{{$item['costo']}}</td>
+                            <td class="text-center">{{$item['descripcion']}}</td>
+                            <td class="text-center">No</td>
+                            <td class="td-actions text-right">
+                                <button type="button" class="btn btn-info" data-tipo="asociar" data-original-title=""
+                                    title="">
+                                    <i class="material-icons">card_giftcard</i>
+                                </button>
+                                <button type="button" class="btn btn-warning" data-tipo="editar" data-original-title=""
+                                    title="">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                <button type="button" class="btn btn-danger" data-tipo="eliminar" data-original-title=""
+                                    title="">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </td>
+                        </tr>
+                        @endforeach
+                        <tr>
+                            <td colspan="4"></td>
+                            <td colspan="2" class="text-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCrearTipoMembresia">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -83,36 +85,37 @@
                     </thead>
                     <tbody id="tablaTipoPromocion" data-info="manola">
                         @foreach ($promociones as $item)
-                        
+
                         <tr data-idPromocion="{{$item['id']}}">
                             <td class="text-left">{{$item['nombre']}}</td>
                             <td class="text-center">{{$item['fecha_inicio']}}--{{$item['fecha_fin']}}</td>
                             <td class="text-center">{{$item['descripcion']}}</td>
                             <td class="text-center">{{$item['cant_meses']}}</td>
                             <td class="td-actions text-right">
-                                <button type="button"  rel="tooltip"  class="btn btn-success" data-original-title=""
+                                <button type="button" rel="tooltip" class="btn btn-success" data-original-title=""
                                     title="">
                                     <i class="material-icons">card_membership</i>
                                 </button>
-                                <button type="button"  rel="tooltip"  data-tipo="editar" class="btn btn-warning" data-original-title="" 
-                                    title="">
+                                <button type="button" rel="tooltip" data-tipo="editar" class="btn btn-warning"
+                                    data-original-title="" title="">
                                     <i class="material-icons">edit</i>
                                 </button>
-                                <button type="button"  rel="tooltip"  data-tipo="eliminar" class="btn btn-danger" data-original-title="" title="">
+                                <button type="button" rel="tooltip" data-tipo="eliminar" class="btn btn-danger"
+                                    data-original-title="" title="">
                                     <i class="material-icons">close</i>
                                 </button>
                             </td>
                         </tr>
                         @endforeach
                         <tr>
-                                <td colspan="4"></td>
-                                <td colspan="2" class="text-right">
-                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#modalCrearPromocion" >
-                                        <i class="material-icons">add</i>
-                                    </button>
-                                </td>
-                            </tr>
-                        
+                            <td colspan="4"></td>
+                            <td colspan="2" class="text-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCrearPromocion">
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </td>
+                        </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -137,15 +140,16 @@
                         </div>
                         <h4 class="card-title">Crear Nuevo Tipo de Membresia</h4>
                     </div>
-                    <form id="formAltaTipoMembresia" >
-                        
+                    <form id="formAltaTipoMembresia">
+
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" required placeholder="Nombre de la Membresia..." name="nombre">
+                                    <input type="text" class="form-control" required placeholder="Nombre de la Membresia..."
+                                        name="nombre">
                                 </div>
                             </div>
 
@@ -163,16 +167,17 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">attach_money</i></div>
                                     </div>
-                                    <input type="number" required placeholder="Costo..." class="form-control" min="0" max="100000" name="costo"/>
+                                    <input type="number" required placeholder="Costo..." class="form-control" min="0"
+                                        max="100000" name="costo" />
                                 </div>
                             </div>
 
 
                         </div>
                         <div class="modal-footer">
-                                <button  class="btn" data-dismiss="modal">Cancelar</button>
-                                <br>
-                                <button  class="btn btn-primary" data-dismiss="modal" id="postAltaTipoMembresia">Aceptar</button>
+                            <button class="btn" data-dismiss="modal">Cancelar</button>
+                            <br>
+                            <button class="btn btn-primary" data-dismiss="modal" id="postAltaTipoMembresia">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -197,16 +202,17 @@
                         </div>
                         <h4 class="card-title">Editar Tipo de Membresia</h4>
                     </div>
-                    <form id="formEditarTipoMembresia" >
-                        
+                    <form id="formEditarTipoMembresia">
+
                         <div class="card-body">
-                                <input type="hidden" name="idTipoMembresia">
+                            <input type="hidden" name="idTipoMembresia">
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" required placeholder="Nombre de la Membresia..." name="nombre">
+                                    <input type="text" class="form-control" required placeholder="Nombre de la Membresia..."
+                                        name="nombre">
                                 </div>
                             </div>
 
@@ -224,16 +230,17 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">attach_money</i></div>
                                     </div>
-                                    <input type="number" required placeholder="Costo..." class="form-control" min="0" max="100000" name="costo"/>
+                                    <input type="number" required placeholder="Costo..." class="form-control" min="0"
+                                        max="100000" name="costo" />
                                 </div>
                             </div>
 
 
                         </div>
                         <div class="modal-footer">
-                                <button  class="btn" data-dismiss="modal">Cancelar</button>
-                                <br>
-                                <button  class="btn btn-primary" data-dismiss="modal" id="postEditarTipoMembresia">Aceptar</button>
+                            <button class="btn" data-dismiss="modal">Cancelar</button>
+                            <br>
+                            <button class="btn btn-primary" data-dismiss="modal" id="postEditarTipoMembresia">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -260,24 +267,24 @@
                         </div>
                         <h4 class="card-title">ATENCIÓN</h4>
                     </div>
-                    
-                        
-                        <div class="card-body">
-                            
 
-                           <div id="textoEliminarMembresia" data-nombreMembresia="" data-idMembresia="">
 
-                           </div>
-                            
+                    <div class="card-body">
 
+
+                        <div id="textoEliminarMembresia" data-nombreMembresia="" data-idMembresia="">
 
                         </div>
-                        <div class="modal-footer">
-                                <button  class="btn" data-dismiss="modal">Cancelar</button>
-                                <br>
-                                <button  class="btn btn-danger" data-dismiss="modal" id="eliminarTipoMembresia">Aceptar</button>
-                        </div>
-                    
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Cancelar</button>
+                        <br>
+                        <button class="btn btn-danger" data-dismiss="modal" id="eliminarTipoMembresia">Aceptar</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -304,8 +311,8 @@
                         </div>
                         <h4 class="card-title">Crear Nueva Promoción</h4>
                     </div>
-                    <form id="formAltaTipoPromocion" >
-                        
+                    <form id="formAltaTipoPromocion">
+
                         <div class="card-body">
 
                             <div class="form-group">
@@ -313,7 +320,8 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..." required name="nombre">
+                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..."
+                                        required name="nombre">
                                 </div>
                             </div>
 
@@ -370,7 +378,8 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Descuento %..." min="0" max="100" class="form-control" name="descuento"/>
+                                            <input type="number" placeholder="Descuento %..." min="0" max="100" class="form-control"
+                                                name="descuento" />
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +392,8 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Tiempo Extendido..." min="0" max=12 class="form-control" name="tiempo_extendido"/>
+                                            <input type="number" placeholder="Tiempo Extendido..." min="0" max=12 class="form-control"
+                                                name="tiempo_extendido" />
                                         </div>
                                     </div>
                                 </div>
@@ -394,22 +404,23 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Cant mínima de meses..." required min="1" max="12" class="form-control" name="cant_meses"/>
+                                            <input type="number" placeholder="Cant mínima de meses..." required min="1"
+                                                max="12" class="form-control" name="cant_meses" />
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
 
-                            
+
 
 
                         </div>
 
                         <div class="modal-footer">
-                            <button  class="btn " data-dismiss="modal">Cancelar</button>
+                            <button class="btn " data-dismiss="modal">Cancelar</button>
                             <br>
-                            <button  class="btn btn-primary" data-dismiss="modal" id="postAltaTipoPromocion" >Aceptar</button>
+                            <button class="btn btn-primary" data-dismiss="modal" id="postAltaTipoPromocion">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -437,8 +448,8 @@
                         </div>
                         <h4 class="card-title">Editar Tipo de Promoción</h4>
                     </div>
-                    <form id="formEditarTipoPromocion" >
-                        
+                    <form id="formEditarTipoPromocion">
+
                         <div class="card-body">
                             <input type="hidden" name="idTipoPromocion">
                             <div class="form-group">
@@ -446,7 +457,8 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="material-icons">chat</i></div>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..." required name="nombre">
+                                    <input type="text" class="form-control" placeholder="Nombre de la Promocion..."
+                                        required name="nombre">
                                 </div>
                             </div>
 
@@ -503,7 +515,8 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Descuento %..." min="0" max="100" class="form-control" name="descuento"/>
+                                            <input type="number" placeholder="Descuento %..." min="0" max="100" class="form-control"
+                                                name="descuento" />
                                         </div>
                                     </div>
                                 </div>
@@ -516,7 +529,8 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Tiempo Extendido..." min="0" max=12 class="form-control" name="tiempo_extendido"/>
+                                            <input type="number" placeholder="Tiempo Extendido..." min="0" max=12 class="form-control"
+                                                name="tiempo_extendido" />
                                         </div>
                                     </div>
                                 </div>
@@ -527,22 +541,23 @@
                                                 <div class="input-group-text"><i class="material-icons">label
                                                     </i></div>
                                             </div>
-                                            <input type="number" placeholder="Cant mínima de meses..." required min="1" max="12" class="form-control" name="cant_meses"/>
+                                            <input type="number" placeholder="Cant mínima de meses..." required min="1"
+                                                max="12" class="form-control" name="cant_meses" />
                                         </div>
                                     </div>
                                 </div>
-                            
+
                             </div>
 
-                            
+
 
 
                         </div>
 
                         <div class="modal-footer">
-                            <button  class="btn " data-dismiss="modal">Cancelar</button>
+                            <button class="btn " data-dismiss="modal">Cancelar</button>
                             <br>
-                            <button  class="btn btn-primary" data-dismiss="modal" id="postEditarTipoPromocion" >Aceptar</button>
+                            <button class="btn btn-primary" data-dismiss="modal" id="postEditarTipoPromocion">Aceptar</button>
                         </div>
                     </form>
                 </div>
@@ -570,24 +585,24 @@
                         </div>
                         <h4 class="card-title">ATENCIÓN</h4>
                     </div>
-                    
-                        
-                        <div class="card-body">
-                            
 
-                           <div id="textoEliminarPromocion" data-nombrePromocion="" data-idPromocion="">
 
-                           </div>
-                            
+                    <div class="card-body">
 
+
+                        <div id="textoEliminarPromocion" data-nombrePromocion="" data-idPromocion="">
 
                         </div>
-                        <div class="modal-footer">
-                                <button  class="btn" data-dismiss="modal">Cancelar</button>
-                                <br>
-                                <button  class="btn btn-danger" data-dismiss="modal" id="eliminarTipoPromocion">Aceptar</button>
-                        </div>
-                    
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Cancelar</button>
+                        <br>
+                        <button class="btn btn-danger" data-dismiss="modal" id="eliminarTipoPromocion">Aceptar</button>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -610,11 +625,11 @@
                             <i class="material-icons">swap_horiz</i>
                             <i class="material-icons">card_giftcard</i>
                         </div>
-                        
+
                         <h4 class="card-title">Asociar Tipo de Membresia a un Tipo de Promoción</h4>
                     </div>
-                     <p class="description text-center"></p>
-                    <form id="formAsociarMembresia-Promocion" >
+                    <p class="description text-center"></p>
+                    <form id="formAsociarMembresia-Promocion">
                         <input type="hidden" name="idTipoMembresia">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -626,21 +641,21 @@
                                             <th class="text-center">Vigencia</th>
                                             <th class="text-center">Beneficio</th>
                                             <th class="text-center">Mínimo de Meses</th>
-                                            
+
                                         </tr>
                                     </thead>
-                                  <tbody>
-                                    
+                                    <tbody>
 
-                                  </tbody>
+
+                                    </tbody>
                                 </table>
-                              </div>
+                            </div>
 
                         </div>
                         <div class="modal-footer">
-                                <button  class="btn" data-dismiss="modal">Cancelar</button>
-                                <br>
-                                <button  class="btn btn-primary" data-dismiss="modal" id="postAsociarMembresiaPromocion">Aceptar</button>
+                            <button class="btn" data-dismiss="modal">Cancelar</button>
+                            <br>
+                            <button class="btn btn-primary" data-dismiss="modal" id="postAsociarMembresiaPromocion">Aceptar</button>
                         </div>
                     </form>
                 </div>

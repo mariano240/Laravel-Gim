@@ -38,6 +38,7 @@ Route::get('/gestionarMembresiaPromocion','membresiaPromocionController@precarga
 //para la gestion de membresia hacia un usuario
 Route::get('/clienteMembresia','UsuarioController@clienteMembresia');
 Route::get('/tablaClientes','UsuarioController@tablaClientes');
+Route::post('/actualizarMembresia','MembresiaController@actualizarMembresia');
 
 Route::post('/registrar', 'UsuarioController@store')->name('resgistrar');
 

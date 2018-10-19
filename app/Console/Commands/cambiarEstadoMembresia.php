@@ -54,18 +54,31 @@ class cambiarEstadoMembresia extends Command
         $fechaLimitePago =$this->fechaLimitePago();
         $fechaLimiteMoroso=$this->fechaLimiteMoroso() ;
         $fechaInicioMes=$this->fechaInicioMes();
+        $fechaActual=date('Y-m-d');
 
         foreach ($membresias as $mem) {
 
-            if($mem->fecha_vencimiento < $fechaLimiteMoroso){
-                $mem->estado_membresia()->associate($estadoPerdido);
-            }elseif($mem->fecha_vencimiento< $fechaInicioMes){
-                $mem->estado_membresia()->associate($estadoMoroso);
-            }elseif($mem->fecha_vencimiento< $fechaLimitePago){
-                $mem->estado_membresia()->associate($estadoPendiente);
+            if( $mem->fecha_vencimiento <= $fechaActual && $fechaInicioMes <= $mem->fecha_vencimiento){
+
+                if($fechaActual < $fechaLimitePago){
+                    $mem->estado_membresia()->associate($estadoPendiente);
+                }else{
+                    $mem->estado_membresia()->associate($estadoMoroso);
+                }
             }else{
-                $mem->estado_membresia()->associate($estadoActivo);
+
+                if($mem->fecha_vencimiento < $fechaLimiteMoroso){
+                    $mem->estado_membresia()->associate($estadoPerdido);
+                }elseif($mem->fecha_vencimiento< $fechaInicioMes){
+                    $mem->estado_membresia()->associate($estadoMoroso);
+                }elseif($mem->fecha_vencimiento< $fechaLimitePago){
+                    $mem->estado_membresia()->associate($estadoPendiente);
+                }else{
+                    $mem->estado_membresia()->associate($estadoActivo);
+                }
             }
+
+            
             $mem->save();
             
         }
@@ -75,7 +88,7 @@ class cambiarEstadoMembresia extends Command
     public function fechaLimitePago() {
         $month = date('m');
         $year = date('Y');
-        return date('Y-m-d', mktime(0,0,0, $month, 10, $year));
+        return date('Y-m-d', mktime(0,0,0, $month, 11, $year));
     }
 
     public function fechaLimiteMoroso() {
