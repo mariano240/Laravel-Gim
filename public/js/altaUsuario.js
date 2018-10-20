@@ -1,18 +1,13 @@
-//envio de formulario
- $("#postAltaCliente").on("click",function(e){
-  // e.preventDefault();
 
-  //definir mensajes, por convencion los tipos de validaciones estan en el formulario, asi lo trabaja el paquete
-  $("#formAltaUsuario").validate({
-    
-    messages: {
-      
-      email: {
-        
-        email: "email incorrecto"
-      }
-    }
-  });
+//bloqueo el acceso por el nav no me funciona
+//  $('#ModalAltaUsuario a').on('click',function(e){
+//    return false;
+//  })
+
+//seteo los mensajes
+$("#formAltaUsuario").validate({
+    //definir mensajes, por convencion los tipos de validaciones estan en el formulario, asi lo trabaja el paquete
+  
 //para validar de a un elemento
 // $('#formAltaUsuario [name="nombre"]').valid();
 // para validar el formulario entero
@@ -21,17 +16,29 @@
 
 //para los form-group tenemos if-focused=linea de color dependiendo del estado del validador, if-filled=linea lila (mas importante), 
 //has-danger , has-success para la letra
+  messages: {
+    
+    email: {
+      
+      email: "email incorrecto"
+    }
+  }
+});
 
-   
-    //  $.ajax( {
-    //      type: "POST",
-    //      url: "http://127.0.0.1:8000/registrar",
-    //      headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-    //      data: cargarFormulario(),
-    //      success: function( response ) {
-    //        console.log( response );
-    //      }
-    //    } );
+//envio de formulario
+$('#ModalAltaUsuario [name="Terminar"]').on("click",function(e){
+  // e.preventDefault();
+
+     $.ajax( {
+         type: "POST",
+         url: "http://127.0.0.1:8000/registrar",
+         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+         data: cargarFormulario(),
+         success: function( response ) {
+          $("#formAltaUsuario").trigger("reset");
+          mensaje("primary","Se creó el Cliente Correctamente");
+         }
+       } );
  })
 
 //carga de las provincias a partir del pais
@@ -171,6 +178,7 @@ function calcularTotal(){
   var total=subtotal*cantidadMeses;
   $('#totalSeleccionado [name="total"]').attr('value',total);
   $('#totalSeleccionado [name="total"]').html("$"+total);
+  $('#totalFormaPago').html('<p>'+'Seleccione la forma de pago para el total de: '+'<strong>'+ '<i> $'+total+'</i>'+'</strong> </p>');
 
 }
 //seleccion de metodo de pago
@@ -226,4 +234,142 @@ function cargarFormulario(){
    }
 return clienteResumen;
   
+}
+
+//control de interfaz siguiente-anterior-terminar
+
+//secuencia para boton siguiente
+$('#ModalAltaUsuario [name="Siguiente"]').on('click',function(){
+  var navAbout= $('#ModalAltaUsuario [href="#about"]');
+  var navDireccion= $('#ModalAltaUsuario [href="#address"]');
+  var navMembresia= $('#ModalAltaUsuario [href="#membresia"]');
+  var navFormaPago= $('#ModalAltaUsuario [href="#formaPago"]');
+  var btnSiguente= $('#ModalAltaUsuario [name="Siguiente"]');
+  var btnAnterior= $('#ModalAltaUsuario [name="Anterior"]');
+  var btnTerminar= $('#ModalAltaUsuario [name="Terminar"]');
+  
+
+// pregunto en que posicion esta y activo la siguiente
+
+ 
+  if(navAbout.attr('aria-selected')=='true'){
+    if(validarNavAbout()){
+      navDireccion.click();
+      btnAnterior.removeAttr("hidden");
+    }
+      
+  }else if(navDireccion.attr('aria-selected')=='true'){
+    if(validarNavDireccion()){
+      navMembresia.click();
+    }
+    
+  }else if(navMembresia.attr('aria-selected')=='true'){
+    if(validarNavMembresia()){
+      navFormaPago.click();
+    btnTerminar.removeAttr("hidden");
+    btnSiguente.attr("hidden","");
+    }
+  }
+  
+})
+
+//secuencia para boton anterior
+$('#ModalAltaUsuario [name="Anterior"]').on('click',function(){
+  var navAbout= $('#ModalAltaUsuario [href="#about"]');
+  var navDireccion= $('#ModalAltaUsuario [href="#address"]');
+  var navMembresia= $('#ModalAltaUsuario [href="#membresia"]');
+  var navFormaPago= $('#ModalAltaUsuario [href="#formaPago"]');
+  var btnSiguiente= $('#ModalAltaUsuario [name="Siguiente"]');
+  var btnAnterior= $('#ModalAltaUsuario [name="Anterior"]');
+  var btnTerminar= $('#ModalAltaUsuario [name="Terminar"]');
+  
+
+// pregunto en que posicion esta 
+
+ if(navDireccion.attr('aria-selected')=='true'){
+    navAbout.click();
+    btnAnterior.attr("hidden","");
+  }else if(navMembresia.attr('aria-selected')=='true'){
+    navDireccion.click();
+  }else if(navFormaPago.attr('aria-selected')=='true'){
+    navMembresia.click();
+    btnTerminar.attr("hidden","");
+    btnSiguiente.removeAttr("hidden");
+  }
+  
+})
+
+
+
+//funciones de validadciones
+//retorna true si todos los campos son validos
+function validarNavAbout(){
+  var cantErrores=0;
+  var clienteNomber=$('#informacionBasica [name="nombre"]');
+  var clienteApellido=$('#informacionBasica [name="apellido"]');
+  var clienteDNI=$('#informacionBasica [name="dni"]');
+  var clienteTelefono=$('#informacionBasica [name="telefono"]');
+  var clienteEmail=$('#informacionBasica [name="email"]');
+  var enrtradas=[clienteNomber,clienteApellido,clienteDNI,clienteTelefono,clienteEmail];
+  enrtradas.forEach(element => {
+    if(!element.valid()){
+      //element.parents().addClass("has-danger");
+      cantErrores+=1;
+    }
+  });
+
+  if(cantErrores>0){
+    return false;
+  }
+  return true;
+
+}
+function validarNavDireccion(){
+  var cantErrores=0;
+  var clienteCalle=$('#seccionDireccion [name="calle"]');
+  var clientealtura=$('#seccionDireccion [name="altura"]');
+  var clientePiso=$('#seccionDireccion [name="piso"]');
+  var clienteDepartamento=$('#seccionDireccion [name="departamento"]');
+  //var clienteLocalidad=$('#select-localidad'); no se valida porque si o si esta seleccionado
+  var enrtradas=[clienteCalle,clientealtura,clientePiso,clienteDepartamento];
+  enrtradas.forEach(element => {
+    if(!element.valid()){
+      //element.parents().addClass("has-danger");
+      cantErrores+=1
+    }
+  });
+
+  if(cantErrores>0){
+    return false;
+  }
+  return true;
+
+}
+function validarNavMembresia(){
+  var cantErrores=0;
+  var clienteMembresia= $('#totalSeleccionado [name="nombre"]').attr('data-idTipoMembresia');
+  var clienteCantMeses= $('#totalSeleccionado [name="cantidadMeses"]');
+  
+  
+  if(clienteMembresia==''){
+    $('#totalSeleccionado [name="nombre"]').html('<p class="error">Seleccione una Membresia</p>');
+    cantErrores+=1;
+  }
+ 
+  
+
+  if(!clienteCantMeses.valid()){
+    //clienteCantMeses.parents().addClass("has-danger");
+    cantErrores+=1;
+  }
+
+  if(cantErrores>0){
+    return false;
+  }
+  return true;
+
+}
+
+function validarNavFormaPago(){
+
 }

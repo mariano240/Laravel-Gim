@@ -93,27 +93,27 @@
                           <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                           
                           <div class="wizard-navigation">
-                              <ul class="nav nav-pills  nav-pills-icons nav-gim justify-content-center" role="tablist">
+                              <ul class="nav nav-pills  nav-pills-icons  justify-content-center" role="tablist">
                                   <li class="nav-item ">
-                                      <a class="nav-link active" href="#about" data-toggle="tab" role="tab">
+                                      <a class="nav-link active show" href="#about" data-toggle="tab" role="tab" aria-selected="true">
                                           <i class="material-icons">face</i>
                                           Informacion Básica
                                       </a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="#address" data-toggle="tab" role="tab">
+                                      <a class="nav-link" href="#address" data-toggle="tab" role="tab" aria-selected="false">
                                           <i class="material-icons">person_pin_circle</i>
                                           Ubicación
                                       </a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="#membresia" data-toggle="tab" role="tab">
+                                      <a class="nav-link" href="#membresia" data-toggle="tab" role="tab" aria-selected="false">
                                           <i class="material-icons">card_membership</i>
                                           Promoción-Membresia
                                       </a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="#formaPago" data-toggle="tab" role="tab">
+                                      <a class="nav-link" href="#formaPago" data-toggle="tab" role="tab" aria-selected="false">
                                           <i class="material-icons">attach_money</i>
                                           Pago
                                       </a>
@@ -150,7 +150,7 @@
                                                   <div class="form-group">
                                                       <label for="nombre" class="bmd-label-floating">Nombre</label>
                                                       <input type="text" class="form-control" id="nombre" name="nombre"
-                                                          required>
+                                                          required maxLength="65" >
                                                   </div>
                                               </div>
                                               <div class="input-group form-control-lg">
@@ -162,7 +162,7 @@
                                                   <div class="form-group">
                                                       <label for="apellido" class="bmd-label-floating">Apellido</label>
                                                       <input type="text" class="form-control"  name="apellido"
-                                                          required>
+                                                          required maxLength="65">
                                                   </div>
                                               </div>
                                           </div>
@@ -178,7 +178,7 @@
                                                   <div class="form-group">
                                                       <label for="dni" class="bmd-label-floating">DNI</label>
                                                       <input type="number" class="form-control"  name="dni"
-                                                          required>
+                                                          required min="10000000" max="100000000">
                                                   </div>
                                               </div>
                                               <!-- Telefono -->
@@ -191,7 +191,7 @@
                                                   <div class="form-group">
                                                       <label for="telefono" class="bmd-label-floating">Teléfono</label>
                                                       <input type="text" class="form-control"  name="telefono"
-                                                          required>
+                                                          required maxLength="255">
                                                   </div>
                                               </div>
           
@@ -316,7 +316,7 @@
           
           
                                   <div class="tab-pane" id="formaPago">
-                                      <h5 class="info-text"> Forma de Pago </h5>
+                                      <h5 class="info-text" id="totalFormaPago"> Forma de Pago </h5>
                                       <div class="row justify-content-center" id=seccionPago>
                                           <div class="col-lg-10">
                                               <div class="row">
@@ -339,7 +339,7 @@
                                                       </div>
                                                   </div>
                                                   <div class="col-sm-4">
-                                                      <div class="choice" data-toggle="wizard-checkbox">
+                                                      <div class="choice active" data-toggle="wizard-checkbox">
                                                           <input type="checkbox" name="efectivo" value="">
                                                           <div class="icon">
                                                               <i class="fa fa-money"></i>
@@ -397,27 +397,27 @@
                                           <div class="col-sm-7">
                                               <div class="form-group">
                                                   <label>Calle</label>
-                                                  <input type="text" class="form-control" name="calle">
+                                                  <input type="text" class="form-control" name="calle" maxLength="65" required>
                                               </div>
                                           </div>
           
                                           <div class="col-sm-3">
                                               <div class="form-group">
                                                   <label>Altura</label>
-                                                  <input type="number" class="form-control" name="altura">
+                                                  <input type="number" class="form-control" name="altura" max="100000" min="1">
                                               </div>
                                           </div>
           
                                           <div class="col-sm-5">
                                               <div class="form-group">
                                                   <label>Departamento</label>
-                                                  <input type="text" class="form-control" name="departamento">
+                                                  <input type="text" class="form-control" name="departamento" maxLength="15">
                                               </div>
                                           </div>
                                           <div class="col-sm-5">
                                               <div class="form-group">
                                                   <label>Piso</label>
-                                                  <input type="text" class="form-control" name="piso">
+                                                  <input type="text" class="form-control" name="piso" maxLength="15">
                                               </div>
                                           </div>
           
@@ -432,14 +432,14 @@
                           </div>
                           <div class="card-footer">
                               <div class="mr-auto">
-                                  <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous"
-                                      value="Previous">
+                                  <input type="button" class="btn  btn-fill btn-default btn-wd" name="Anterior"
+                                      value="Anterior" hidden>
                               </div>
                               <div class="ml-auto">
-                                  <input type="button" id="postAltaCliente" class="btn btn-next btn-fill btn-rose btn-wd" name="next"
-                                      value="Next">
-                                  <input type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish"
-                                      style="display: none;">
+                                  <input type="button"  class="btn btn-fill btn-primary btn-wd" name="Siguiente"
+                                      value="Siguiente">
+                                  <input type="button" id="postAltaCliente" class="btn btn-fill btn-primary btn-wd" data-dismiss="modal" name="Terminar" value="Terminar"
+                                      hidden>
                               </div>
                               <div class="clearfix"></div>
                           </div>
@@ -483,12 +483,12 @@
                             <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                             
                             <div class="wizard-navigation">
-                                <ul class="nav nav-pills  nav-pills-icons nav-gim justify-content-center" role="tablist">
+                                <ul class="nav nav-pills  nav-pills-icons justify-content-center" role="tablist">
                                     
                                     <li class="nav-item">
                                         <a class="nav-link active" href="#ActMembresia" data-toggle="tab" role="tab">
                                             <i class="material-icons">card_membership</i>
-                                            Promoción-Membresia
+                                            Membresia-Promoción
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -673,7 +673,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 
-
+<script src="assets/js/plugins/bootstrap-notify.js"></script>
 <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
 

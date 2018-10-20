@@ -426,6 +426,8 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <script src="assets/js/material-dashboard.min.js?v=2.0.2" type="text/javascript"></script>
 
+<script src="js/notificaciones-alertas.js"></script>
+
     <script>
         $(document).ready(function () {
 
