@@ -35,11 +35,20 @@ $('#ModalAltaUsuario [name="Terminar"]').on("click",function(e){
          headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
          data: cargarFormulario(),
          success: function( response ) {
-          $("#formAltaUsuario").trigger("reset");
+           //reseteo el modal
+           reestrablecerModalAlta();
+          
+
           mensaje("primary","Se creó el Cliente Correctamente");
+
          }
        } );
  })
+
+$('#ModalAltaUsuario [name="cerrar"]').on("click",function(){
+  reestrablecerModalAlta();
+})
+
 
 //carga de las provincias a partir del pais
 $("#select-pais").on("change",function(e){
@@ -80,6 +89,7 @@ $('#seccionMembresias button').on('click',function(e){
   //reestablezco la tabla de resumen
   $('#totalSeleccionado [name="descuento"]').html("-");
   $('#totalSeleccionado [name="descuento"]').attr("value",0);
+  $('#totalSeleccionado [name="descuento"]').attr("data-idTipoPromocion",0);
 
 
 
@@ -370,6 +380,41 @@ function validarNavMembresia(){
 
 }
 
-function validarNavFormaPago(){
+function reestrablecerModalAlta(){
+  var navAbout= $('#ModalAltaUsuario [href="#about"]');
+  var btnSiguente= $('#ModalAltaUsuario [name="Siguiente"]');
+  var btnAnterior= $('#ModalAltaUsuario [name="Anterior"]');
+  var btnTerminar= $('#ModalAltaUsuario [name="Terminar"]');
+  //reestrablece la posicion y botones
+  btnTerminar.attr("hidden","");
+  btnAnterior.attr("hidden","");
+  btnSiguente.removeAttr("hidden");
+  navAbout.click();
 
+  //reestablezco la seleccion de mebresia 
+  $('#seccionMembresias [data-seleccion]').attr("class",'card-header card-header-info card-header-icon');
+  $('#seccionMembresias i').html("card_membership");
+
+  //elimino la seleccion de promociones
+  $('#seccionPromociones [class="card card-stats"]').attr("hidden","");
+  
+  //reestablezco la tabla de resumen
+  $('#totalSeleccionado [name="descuento"]').html("-");
+  $('#totalSeleccionado [name="descuento"]').attr("value",0);
+  $('#totalSeleccionado [name="descuento"]').attr("data-idTipoPromocion","");
+  $('#totalSeleccionado [name="cantidadMeses"]').val(1);
+  $('#totalSeleccionado [name="nombre"]').html("");
+  $('#totalSeleccionado [name="costo"]').html("");
+  $('#totalSeleccionado [name="total"]').html("");
+  $('#totalSeleccionado [name="subtotal"]').html("");
+  $('#totalSeleccionado [name="costo"]').attr("value",0);
+  $('#totalSeleccionado [data-idTipoMembresia]').attr("data-idTipoMembresia","");
+
+
+  //limpio los imput
+  $("#formAltaUsuario").trigger("reset");
+  
+
+  //limpio los campos de validacion
+  $("#formAltaUsuario").data('validator').resetForm();
 }

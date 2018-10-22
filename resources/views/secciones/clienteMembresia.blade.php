@@ -81,7 +81,7 @@
                         </h3>
                         <h5 class="card-description">Se creará el cliente y su membresia</h5>
                     </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" name=cerrar>
                     <i class="material-icons">clear</i>
                     </button>
                   </div>
