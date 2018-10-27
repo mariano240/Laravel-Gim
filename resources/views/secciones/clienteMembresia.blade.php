@@ -5,13 +5,13 @@
                 <i class="material-icons">account_circle
                 </i>
             </div>
-            <h4 class="card-title">Clientes Activos </h4>
+            <h4 class="card-title">Clientes Activos para Actualizar su Membresia </h4>
         </div>
         <div class="card-body">
                
                 <div class="toolbar  col-md-5 ml-auto">
                     <div class="btn-group">
-                            <button class="btn btn-info" data-toggle="modal" data-target="#ModalAltaUsuario">
+                            <button class="btn btn-info" id="btn-modalAltaUsuario" data-toggle="modal" data-target="#ModalAltaUsuario">
                                     <i class="material-icons">add</i> Nuevo Cliente
                                   <div class="ripple-container"></div>
                             </button>
@@ -292,7 +292,7 @@
                                                           <td class="text-center" name="costo">
                                                               
                                                           </td>
-                                                          <td class="text-center" name="descuento" data-idTipoPromocion="">
+                                                          <td class="text-center" name="descuento" data-idTipoPromocion="0">
                                                               
                                                           </td>
                                                           <td class="text-center" name="subtotal">
@@ -438,7 +438,7 @@
                               <div class="ml-auto">
                                   <input type="button"  class="btn btn-fill btn-primary btn-wd" name="Siguiente"
                                       value="Siguiente">
-                                  <input type="button" id="postAltaCliente" class="btn btn-fill btn-primary btn-wd" data-dismiss="modal" name="Terminar" value="Terminar"
+                                  <input type="button" id="postAltaCliente" class="btn btn-fill btn-primary btn-wd"  name="Terminar" value="Terminar"
                                       hidden>
                               </div>
                               <div class="clearfix"></div>
@@ -454,7 +454,7 @@
 </div>
 </div>
 
-{{-- modal asignar membresia --}}
+{{-- modal actualizar membresia --}}
 
 <div class="modal fade ps-child" id="ModalActualizarMembresia" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
@@ -470,7 +470,7 @@
                           </h3>
                           <h5 class="card-description" id="ModalDescAct">actualizando la membresia de "juansito"</h5>
                       </div>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="Cerrar">
                       <i class="material-icons">clear</i>
                       </button>
                     </div>
@@ -486,7 +486,7 @@
                                 <ul class="nav nav-pills  nav-pills-icons justify-content-center" role="tablist">
                                     
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#ActMembresia" data-toggle="tab" role="tab">
+                                        <a class="nav-link active show" href="#ActMembresia" aria-selected="true" data-toggle="tab" role="tab">
                                             <i class="material-icons">card_membership</i>
                                             Membresia-Promoción
                                         </a>
@@ -579,7 +579,7 @@
                                                             <td class="text-center" name="costo">
                                                                 
                                                             </td>
-                                                            <td class="text-center" name="descuento" data-idTipoPromocion="">
+                                                            <td class="text-center" name="descuento" data-idTipoPromocion="0">
                                                                 
                                                             </td>
                                                             <td class="text-center" name="subtotal">
@@ -603,7 +603,7 @@
             
             
                                     <div class="tab-pane" id="ActFormaPago">
-                                        <h5 class="info-text"> Forma de Pago </h5>
+                                        <h5 class="info-text" id="totalFormaPagoModal"> Forma de Pago </h5>
                                         <div class="row justify-content-center" id=seccionPagoModal>
                                             <div class="col-lg-10">
                                                 <div class="row">
@@ -626,7 +626,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <div class="choice" data-toggle="wizard-checkbox">
+                                                        <div class="choice active" data-toggle="wizard-checkbox">
                                                             <input type="checkbox" name="efectivo" value="">
                                                             <div class="icon">
                                                                 <i class="fa fa-money"></i>
@@ -646,14 +646,14 @@
                             </div>
                             <div class="card-footer">
                                 <div class="mr-auto">
-                                    <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous"
-                                        value="Previous">
+                                    <input type="button" class="btn btn-fill btn-default" name="Anterior"
+                                        value="Anterior" hidden>
                                 </div>
                                 <div class="ml-auto">
-                                    <input type="button" id="postActualizarMembresia" class="btn btn-next btn-fill btn-rose btn-wd" name="next"
-                                        value="Next">
-                                    <input type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Finish"
-                                        style="display: none;">
+                                    <input type="button"  class="btn btn-fill btn-primary " name="Siguiente"
+                                        value="Siguiente">
+                                    <input type="button" class="btn btn-fill btn-primary" name="Terminar" id="postActualizarMembresia" value="Terminar"
+                                        hidden>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -668,8 +668,8 @@
   </div>
   </div>
 
-<script src="../../assets/js/core/jquery.min.js" type="text/javascript"></script>
-<script src="../../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
+{{-- <script src="../../assets/js/core/jquery.min.js" type="text/javascript"></script> --}}
+{{-- <script src="../../assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 

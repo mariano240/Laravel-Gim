@@ -30,9 +30,15 @@ class altaUsuarioRequest extends FormRequest
             'telefono' => 'string|max:255',
             'dni' => 'required|numeric|unique:users',
             'calle' => 'required|string|max:65',
-            'altura' => 'numeric|max:100000',
+            'altura' => 'nullable|numeric|max:100000',
             'departamento' => 'nullable|string|max:6',
-            'piso' => 'nullable|string|max:6'
+            'piso' => 'nullable|string|max:6',
+
+            'idMembresia'=> 'required|numeric|exists:tipo_membresias,id',
+            'idPromocion'=> 'nullable|numeric',
+            'formaPago'=> 'required|string|max:255',
+            'cantidadMeses'=> 'required|numeric|max:24',
+
         ];
     }
 }

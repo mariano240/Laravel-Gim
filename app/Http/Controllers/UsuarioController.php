@@ -31,16 +31,27 @@ class UsuarioController extends Controller
     public function tablaClientes(){
         return datatables()->of(
             //se reestructurara cuando se tenga servicio que cambie los estados, a diario, entonces aca solo se evaluaria el tipo de estado
-            User::whereHas('membresia',function($query){
-                $query->where([
-                    ['estado_membresia_id','like','2']
-                ]);
-                $query->orWhere([
-                    ['estado_membresia_id','like','3']
-                ]);
+            // User::whereHas('membresia',function($query){
+            //     $query->where([
+            //         ['estado_membresia_id','=','2']
+            //     ]);
+            //     $query->orWhere([
+            //         ['estado_membresia_id','=','3']
+            //     ]);
                 
-            })
-            ->with(['membresia','membresia.pagos','membresia.promociones','membresia.estado_membresia'])->get()
+            // })
+            // ->with(['membresia','membresia.pagos','membresia.promociones','membresia.estado_membresia'])->get()
+
+            
+            // )
+            // ->toJson();
+
+            Membresia::where([
+                    ['estado_membresia_id','=','2']
+                ])->orWhere([
+                    ['estado_membresia_id','=','3']
+                ])
+            ->with(['user','pagos','promociones','estado_membresia'])->get()
 
             
             )

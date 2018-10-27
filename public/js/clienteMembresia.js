@@ -14,7 +14,7 @@
   var table = $('#datatable').DataTable();
   */
 
- $('#tablaClientes').DataTable( {
+ var tablaClientes=$('#tablaClientes').DataTable( {
     "language": {
         "emptyTable":			"No existen clientes pendientes de pago a la fecha",
         "info":		   		"Del _START_ al _END_ de _TOTAL_ ",
@@ -55,20 +55,20 @@
         
       {data:null,
         render:function(data,type,row){
-          return '<button type="button" rel="tooltip" data-tipo="actualizarMembresia" data-idUsuario="'+ row.id+'" data-idMembresia="'+row.membresia[0].id+'" class="btn btn-success btn-sm" data-original-title="" title=""><i class="material-icons">card_membership</i><div class="ripple-container"></div></button>'
+          return '<button type="button" rel="tooltip" data-tipo="actualizarMembresia" data-idUsuario="'+ row.user.id+'" data-idMembresia="'+row.id+'" class="btn btn-success btn-sm" data-original-title="" title=""><i class="material-icons">card_membership</i><div class="ripple-container"></div></button>'
         },
         orderable: false, searchable: false
       },
         //,orderable: false, searchable: false},
         
         
+        {data:'user.nombre'},
+        {data:'user.apellido'},
+        {data:'user.dni'},
         {data:'nombre'},
-        {data:'apellido'},
-        {data:'dni'},
-        {data:'membresia[0].nombre'},
-        {data:'membresia[0].promociones[0].nombre'},
-        {data:'membresia[0].pagos[0].forma_pago'},
-        {data:'membresia[0].estado_membresia.estado'},
+        {data:'promociones[0].nombre'},
+        {data:'pagos[0].forma_pago'},
+        {data:'estado_membresia.estado'},
         ],
     
         // "columnDefs": [
@@ -77,6 +77,11 @@
         //   ]
     
     });
+
+    //bloqueo el acceso directo del van
+    $('#ModalActualizarMembresia a').on('click',function(e){
+      return false;
+   });
 
     $("#tablaClientes").on("click",'[data-tipo="actualizarMembresia"]',function(e){
       var idMembresia=$(this).attr("data-idMembresia");
@@ -88,7 +93,7 @@
       $('#ModalActualizarMembresia  [data-idMembresiaActual]').attr("data-idMembresiaActual",idMembresia);
       $("#ModalDescAct").html(htmlDesc);
 
-      $('#ModalActualizarMembresia').modal(true);
+      $('#ModalActualizarMembresia').modal('show');
       
     });
    
@@ -109,6 +114,7 @@ $('#seccionMembresiasModal button').on('click',function(e){
   //reestablezco la tabla de resumen
   $('#totalSeleccionadoModal [name="descuento"]').html("-");
   $('#totalSeleccionadoModal [name="descuento"]').attr("value",0);
+  $('#totalSeleccionadoModal [name="descuento"]').attr("data-idTipoPromocion",0);
 
 
 
@@ -207,10 +213,10 @@ function calcularTotalModal(){
   var total=subtotal*cantidadMeses;
   $('#totalSeleccionadoModal [name="total"]').attr('value',total);
   $('#totalSeleccionadoModal [name="total"]').html("$"+total);
-
+  $('#totalFormaPagoModal').html('<p>'+'Seleccione la forma de pago para el total de: '+'<strong>'+ '<i> $'+total+'</i>'+'</strong> </p>');
 }
 //seleccion de metodo de pago
-$('#seccionPagoModal div [class="choice"]').on('click',function(){
+$('#seccionPagoModal div [class="choice"], #seccionPagoModal div [class="choice active"]').on('click',function(){
   //limpio los seleccionados
   $('#seccionPagoModal div [class="choice active"]').attr('class',"choice");
   
@@ -254,15 +260,139 @@ $("#postActualizarMembresia").on("click",function(){
     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
     data: data,
     success: function( response ) {
-      console.log( response );
+      $('#ModalActualizarMembresia').modal('hide');
+      reestrablecerModalActMembresia();
+      mensaje("primary","La membresia se actualizó correctamente");
+     tablaClientes.ajax.reload();
+    },
+    error: function(error){
+      //
+
     }
   } );
 
 
 })
 
+//estructura de secuencia del siguiente
+
+//control de interfaz siguiente-anterior-terminar
+
+//secuencia para boton siguiente
+$('#ModalActualizarMembresia [name="Siguiente"]').on('click',function(){
+  var navMembresia= $('#ModalActualizarMembresia [href="#ActMembresia"]');
+  var navFormaPago= $('#ModalActualizarMembresia [href="#ActFormaPago"]');
+  var btnSiguiente= $('#ModalActualizarMembresia [name="Siguiente"]');
+  var btnAnterior= $('#ModalActualizarMembresia [name="Anterior"]');
+  var btnTerminar= $('#ModalActualizarMembresia [name="Terminar"]');
+  
+
+// pregunto en que posicion esta y activo la siguiente
+
+ 
+  if(navMembresia.attr('aria-selected')=='true'){
+    
+    if(validarNavActMembresia()){
+      navFormaPago.tab('show');
+      btnAnterior.removeAttr("hidden");
+      btnTerminar.removeAttr("hidden");
+      btnSiguiente.attr("hidden","");
+    }
+  }
+      
+})
 
 
+//secuencia boton anterior
+$('#ModalActualizarMembresia [name="Anterior"]').on('click',function(){
+  var navMembresia= $('#ModalActualizarMembresia [href="#ActMembresia"]');
+  var navFormaPago= $('#ModalActualizarMembresia [href="#ActFormaPago"]');
+  var btnSiguiente= $('#ModalActualizarMembresia [name="Siguiente"]');
+  var btnAnterior= $('#ModalActualizarMembresia [name="Anterior"]');
+  var btnTerminar= $('#ModalActualizarMembresia [name="Terminar"]');
+  
+
+// pregunto en que posicion esta y activo la anterior
+
+ 
+if(navFormaPago.attr('aria-selected')=='true'){
+  navMembresia.tab('show');
+  btnTerminar.attr("hidden","");
+  btnSiguiente.removeAttr("hidden");
+  btnAnterior.attr("hidden","");
+}
+      
+})
+
+function validarNavActMembresia(){
+  var cantErrores=0;
+  var clienteMembresia= $('#totalSeleccionadoModal [name="nombre"]').attr('data-idTipoMembresia');
+  var clienteCantMeses= $('#totalSeleccionadoModal [name="cantidadMeses"]');
+  
+  
+  if(clienteMembresia==''){
+    $('#totalSeleccionadoModal [name="nombre"]').html('<p class="error">Seleccione una Membresia</p>');
+    cantErrores+=1;
+  }
+ 
+  
+
+  if(!clienteCantMeses.valid()){
+    //clienteCantMeses.parents().addClass("has-danger");
+    cantErrores+=1;
+  }
+
+  if(cantErrores>0){
+    return false;
+  }
+  return true;
+
+}
+
+//boton de cerrar el actualizar membresia
+$('#ModalActualizarMembresia [name="Cerrar"]').on("click",function(){
+  reestrablecerModalActMembresia();
+})
+
+function reestrablecerModalActMembresia(){
+  console.log("esta reestrableciendo");
+  var navMemb= $('#ModalActualizarMembresia [href="#ActMembresia"]');
+  var btnSiguente= $('#ModalActualizarMembresia [name="Siguiente"]');
+  var btnAnterior= $('#ModalActualizarMembresia [name="Anterior"]');
+  var btnTerminar= $('#ModalActualizarMembresia [name="Terminar"]');
+  //reestrablece la posicion y botones
+  btnTerminar.attr("hidden","");
+  btnAnterior.attr("hidden","");
+  btnSiguente.removeAttr("hidden");
+  navMemb.tab('show');
+
+  //reestablezco la seleccion de mebresia 
+  $('#seccionMembresiasModal [data-seleccion]').attr("class",'card-header card-header-info card-header-icon');
+  $('#seccionMembresiasModal i').html("card_membership");
+
+  //elimino la seleccion de promociones
+  $('#seccionPromocionesModal [class="card card-stats"]').attr("hidden","");
+  
+  //reestablezco la tabla de resumen
+  $('#totalSeleccionadoModal [name="descuento"]').html("-");
+  $('#totalSeleccionadoModal [name="descuento"]').attr("value",0);
+  $('#totalSeleccionadoModal [name="descuento"]').attr("data-idTipoPromocion","");
+  $('#totalSeleccionadoModal [name="cantidadMeses"]').val(1);
+  $('#totalSeleccionadoModal [name="nombre"]').html("");
+  $('#totalSeleccionadoModal [name="costo"]').html("");
+  $('#totalSeleccionadoModal [name="total"]').html("");
+  $('#totalSeleccionadoModal [name="subtotal"]').html("");
+  $('#totalSeleccionadoModal [name="costo"]').attr("value",0);
+  $('#totalSeleccionadoModal [data-idTipoMembresia]').attr("data-idTipoMembresia","");
+
+
+  //limpio los imput
+  $("#formActualizarMembresia").trigger("reset");
+  
+
+  //limpio los campos de validacion
+  $("#formActualizarMembresia").data('validator').resetForm();
+}
 
   /*
   // Edit record

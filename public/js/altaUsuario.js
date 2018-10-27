@@ -1,8 +1,8 @@
 
-//bloqueo el acceso por el nav no me funciona
-//  $('#ModalAltaUsuario a').on('click',function(e){
-//    return false;
-//  })
+//bloqueo el acceso por el nav para lograr la secuencialidad
+ $('#ModalAltaUsuario a').on('click',function(e){
+    return false;
+ });
 
 //seteo los mensajes
 $("#formAltaUsuario").validate({
@@ -36,12 +36,36 @@ $('#ModalAltaUsuario [name="Terminar"]').on("click",function(e){
          data: cargarFormulario(),
          success: function( response ) {
            //reseteo el modal
-           reestrablecerModalAlta();
-          
-
+           $('#ModalAltaUsuario').modal('hide');
+          reestrablecerModalAlta();
           mensaje("primary","Se creó el Cliente Correctamente");
+         },
+         error: function(error){
+          
+          
+           var errores= $.parseJSON(error.responseText);
+           //console.log(errores.errors);
+          $.each(errores.errors,function(index,value){
+            console.log(index, value);
+            if(index=='email'){
+              var htmlemail='<label id="email-error" class="error" for="email">'+ value +'</label>'
+              $('#informacionBasica [name="email"]').after(htmlemail);
+              //$('#informacionBasica [name="email"]').focus();
+            }else if(index=='dni'){
+              var htmldni='<label id="dni-error" class="error" for="dni">'+ value +'</label>'
+              $('#informacionBasica [name="dni"]').after(htmldni);
+              //$('#informacionBasica [name="dni"]').focus();
+            }
 
+          });
+          $('#ModalAltaUsuario [href="#about"]').tab('show');
+          $('#ModalAltaUsuario [name="Anterior"]').attr("hidden","");
+          $('#ModalAltaUsuario [name="Terminar"]').attr("hidden","");
+          $('#ModalAltaUsuario [name="Siguiente"]').removeAttr("hidden");
+          $('#ModalAltaUsuario').modal('show');
+          //$('#ModalAltaUsuario').modal();
          }
+
        } );
  })
 
@@ -192,7 +216,7 @@ function calcularTotal(){
 
 }
 //seleccion de metodo de pago
-$('#seccionPago div [class="choice"]').on('click',function(){
+$('#seccionPago div [class="choice"], #seccionPago div [class="choice active"]').on('click',function(){
   //limpio los seleccionados
   $('#seccionPago div [class="choice active"]').attr('class',"choice");
   
@@ -254,7 +278,7 @@ $('#ModalAltaUsuario [name="Siguiente"]').on('click',function(){
   var navDireccion= $('#ModalAltaUsuario [href="#address"]');
   var navMembresia= $('#ModalAltaUsuario [href="#membresia"]');
   var navFormaPago= $('#ModalAltaUsuario [href="#formaPago"]');
-  var btnSiguente= $('#ModalAltaUsuario [name="Siguiente"]');
+  var btnSiguiente= $('#ModalAltaUsuario [name="Siguiente"]');
   var btnAnterior= $('#ModalAltaUsuario [name="Anterior"]');
   var btnTerminar= $('#ModalAltaUsuario [name="Terminar"]');
   
@@ -264,20 +288,20 @@ $('#ModalAltaUsuario [name="Siguiente"]').on('click',function(){
  
   if(navAbout.attr('aria-selected')=='true'){
     if(validarNavAbout()){
-      navDireccion.click();
+      navDireccion.tab('show');
       btnAnterior.removeAttr("hidden");
     }
       
   }else if(navDireccion.attr('aria-selected')=='true'){
     if(validarNavDireccion()){
-      navMembresia.click();
+      navMembresia.tab('show');
     }
     
   }else if(navMembresia.attr('aria-selected')=='true'){
     if(validarNavMembresia()){
-      navFormaPago.click();
+      navFormaPago.tab('show');
     btnTerminar.removeAttr("hidden");
-    btnSiguente.attr("hidden","");
+    btnSiguiente.attr("hidden","");
     }
   }
   
@@ -297,12 +321,12 @@ $('#ModalAltaUsuario [name="Anterior"]').on('click',function(){
 // pregunto en que posicion esta 
 
  if(navDireccion.attr('aria-selected')=='true'){
-    navAbout.click();
+    navAbout.tab('show');
     btnAnterior.attr("hidden","");
   }else if(navMembresia.attr('aria-selected')=='true'){
-    navDireccion.click();
+    navDireccion.tab('show');
   }else if(navFormaPago.attr('aria-selected')=='true'){
-    navMembresia.click();
+    navMembresia.tab('show');
     btnTerminar.attr("hidden","");
     btnSiguiente.removeAttr("hidden");
   }
@@ -313,6 +337,7 @@ $('#ModalAltaUsuario [name="Anterior"]').on('click',function(){
 
 //funciones de validadciones
 //retorna true si todos los campos son validos
+//se realizara la validacion del numero de dni e email
 function validarNavAbout(){
   var cantErrores=0;
   var clienteNomber=$('#informacionBasica [name="nombre"]');
@@ -389,7 +414,7 @@ function reestrablecerModalAlta(){
   btnTerminar.attr("hidden","");
   btnAnterior.attr("hidden","");
   btnSiguente.removeAttr("hidden");
-  navAbout.click();
+  navAbout.tab('show');
 
   //reestablezco la seleccion de mebresia 
   $('#seccionMembresias [data-seleccion]').attr("class",'card-header card-header-info card-header-icon');

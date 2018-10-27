@@ -43,7 +43,7 @@ class MembresiaController extends Controller
         $nuevaMembresia->save();
         
         //es posible que no seleccione ninguna promocion
-       if($idTipoPromocion!=''){
+       if($idTipoPromocion!='0'){
                 //creo promocion a partir del tipo de promocion
             $tipoPromocion=TipoPromocion::find($idTipoPromocion);
             $nuevaPromocion=new Promocion();
@@ -112,28 +112,42 @@ class MembresiaController extends Controller
         $nuevaMembresia->fecha_vencimiento=date('y/m/d', $fechaOperada );
         $nuevaMembresia->user()->associate($usuario);
         $nuevaMembresia->save();
-        
-        //creo promocion a partir del tipo de promocion
-       $tipoPromocion=TipoPromocion::find($idTipoPromocion);
-       $nuevaPromocion=new Promocion();
-       $nuevaPromocion->nombre=$tipoPromocion->nombre;
-       $nuevaPromocion->descuento=$tipoPromocion->descuento;
-       $nuevaPromocion->tiempo_extendido=$tipoPromocion->tiempo_extendido;
-       $nuevaPromocion->descripcion=$tipoPromocion->descripcion;
-       $nuevaPromocion->fecha_adquisicion=date('y/m/d');
-       $nuevaPromocion->membresia()->associate($nuevaMembresia);
-       $nuevaPromocion->save();
 
-        //creo la forma de pago
-        // 
+          //es posible que no seleccione ninguna promocion
+       if($idTipoPromocion!='0'){
+        
+                //creo promocion a partir del tipo de promocion
+            $tipoPromocion=TipoPromocion::find($idTipoPromocion);
+            $nuevaPromocion=new Promocion();
+            $nuevaPromocion->nombre=$tipoPromocion->nombre;
+            $nuevaPromocion->descuento=$tipoPromocion->descuento;
+            $nuevaPromocion->tiempo_extendido=$tipoPromocion->tiempo_extendido;
+            $nuevaPromocion->descripcion=$tipoPromocion->descripcion;
+            $nuevaPromocion->fecha_adquisicion=date('y/m/d');
+            $nuevaPromocion->membresia()->associate($nuevaMembresia);
+            $nuevaPromocion->save();
+
+                //creo la forma de pago
+                // 
+                $costo=$tipoMembresia->costo;
+                $descuento=$nuevaPromocion->descuento;
+                $pago =new Pago();
+                $pago->monto= ($costo-(($descuento/100)*$costo))*$cantidadMeses;
+                $pago->forma_pago=$formaPago;
+                $pago->fecha=date('y/m/d');
+                $pago->membresia()->associate($nuevaMembresia);
+                $pago->save();
+       }else{
         $costo=$tipoMembresia->costo;
-        $descuento=$nuevaPromocion->descuento;
+        
         $pago =new Pago();
-        $pago->monto= ($costo-(($descuento/100)*$costo))*$cantidadMeses;
+        $pago->monto= $costo*$cantidadMeses;
         $pago->forma_pago=$formaPago;
         $pago->fecha=date('y/m/d');
         $pago->membresia()->associate($nuevaMembresia);
         $pago->save();
+
+       }
 
     }
     /**
